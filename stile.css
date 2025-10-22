@@ -37,8 +37,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap;
   padding: 10px 20px;
+  flex-wrap: nowrap;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .logo-container {
@@ -47,13 +49,72 @@ body {
   border-radius: 12px;
   padding: 6px 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  flex-shrink: 0;
+  flex: 0 0 auto;
 }
 
 .logo {
   height: 70px;
   width: auto;
+  display: block;
 }
+
+/* LINK */
+.nav-links-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--petrolio);
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--ocra);
+}
+
+/* ✅ VERSIONE MOBILE: mantiene logo e menu affiancati */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+  }
+
+  .logo {
+    height: 55px;
+  }
+
+  .nav-links {
+    gap: 10px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+  }
+
+  /* evita che vadano a capo */
+  .nav-links-container {
+    flex: 1;
+    justify-content: flex-end;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 
 /* LINK */
 .nav-links {
