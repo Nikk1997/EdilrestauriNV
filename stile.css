@@ -350,6 +350,14 @@ footer a:hover {
     height: 220px;
   }
   
+/* ======================
+   ANIMAZIONI SCROLL
+   ====================== */
+@keyframes fadeSlideUp {
+  0% {opacity:0; transform: translateY(20px);}
+  100% {opacity:1; transform: translateY(0);}
+}
+
 }
 /* --- CTA SECTION --- */
 .cta-section {
@@ -410,12 +418,4 @@ footer a:hover {
     padding: 12px 28px;
     font-size: 0.9rem;
   }
-}
-
-/* ======================
-   ANIMAZIONI SCROLL
-   ====================== */
-@keyframes fadeSlideUp {
-  0% {opacity:0; transform: translateY(20px);}
-  100% {opacity:1; transform: translateY(0);}
 }
