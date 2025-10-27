@@ -349,6 +349,67 @@ footer a:hover {
   .galleria-grid img {
     height: 220px;
   }
+  
+}
+/* --- CTA SECTION --- */
+.cta-section {
+  background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+  color: #fff;
+  text-align: center;
+  padding: 80px 20px;
+  border-top: 2px solid gold;
+  border-bottom: 2px solid gold;
+}
+
+.cta-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: gold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cta-container p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.cta-button {
+  background-color: gold;
+  color: #1e1e1e;
+  padding: 14px 36px;
+  border-radius: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.cta-button:hover {
+  background-color: #f5c400;
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .cta-container h2 {
+    font-size: 1.6rem;
+  }
+
+  .cta-container p {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    padding: 12px 28px;
+    font-size: 0.9rem;
+  }
 }
 
 /* ======================
