@@ -455,14 +455,14 @@ footer a:hover {
 }
 
 .nav-menu a {
-  color: var(--ocra);
+  color: var(--petrolio);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s;
 }
 
 .nav-menu a:hover {
-  color: var(--#E1B12C);
+  color: var(--ocra);
 }
 
 /* ======= VERSIONE MOBILE ======= */
@@ -477,7 +477,7 @@ footer a:hover {
     right: -100%;
     width: 75%;
     height: 100vh;
-    background: rgba(255,255,255,0.97);
+    background: rgba(234, 234, 225, 1);
     backdrop-filter: blur(6px);
     box-shadow: -3px 0 10px rgba(0,0,0,0.15);
     display: flex;
