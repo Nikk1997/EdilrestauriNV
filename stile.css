@@ -436,7 +436,7 @@ footer a:hover {
 .hamburger span {
   height: 3px;
   width: 100%;
-  background: var(--#E1B12C);
+  background: var(--petrolio);
   border-radius: 3px;
   transition: all 0.3s ease;
 }
@@ -462,7 +462,7 @@ footer a:hover {
 }
 
 .nav-menu a:hover {
-  color: var(--ocra);
+  color: var(--#E1B12C);
 }
 
 /* ======= VERSIONE MOBILE ======= */
