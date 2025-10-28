@@ -436,7 +436,7 @@ footer a:hover {
 .hamburger span {
   height: 3px;
   width: 100%;
-  background: var(--petrolio);
+  background: var(--#E1B12C);
   border-radius: 3px;
   transition: all 0.3s ease;
 }
