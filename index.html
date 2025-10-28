@@ -16,16 +16,14 @@
       <img src="img/logo.png" alt="EdilRestauri Logo" class="logo">
     </div>
 
-    <!-- HAMBURGER ICON -->
     <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
       <span></span>
     </div>
 
-    <!-- MENU -->
-    <nav class="mobile-nav" id="mobile-nav">
-      <ul class="nav-links">
+    <nav class="nav-menu" id="nav-menu">
+      <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#galleria">Lavori</a></li>
         <li><a href="#servizi">Servizi</a></li>
@@ -34,7 +32,6 @@
     </nav>
   </div>
 </header>
-
 
   <!-- HERO -->
   <section id="home" class="hero">
@@ -153,21 +150,22 @@
 
     servizi.forEach(s => observer.observe(s));
   </script>
-<script>
+  <script>
   const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('nav-links');
+  const navMenu = document.getElementById('nav-menu');
 
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
+    navMenu.classList.toggle('active');
   });
 
-  document.querySelectorAll('.nav-links a').forEach(link => {
+  document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('active');
-      navLinks.classList.remove('active');
+      navMenu.classList.remove('active');
     });
   });
-</script>
+  </script>
+
 </body>
 </html>
