@@ -208,6 +208,14 @@ body {
   }
 }
 
+/* Tablet */
+@media (max-width: 900px) {
+  .galleria-grid .foto {
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+}
+
 /* LIGHTBOX */
 .lightbox {
   display: none;
