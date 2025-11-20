@@ -25,6 +25,10 @@ body {
 }
 
 /* NAVBAR */
+/* NASCONDERE HAMBURGER SU DESKTOP */
+.hamburger {
+  display: none;
+}
 .navbar {
   background: var(--avorio);
   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
@@ -119,10 +123,11 @@ body {
 
 /* LINK */
 .nav-links {
-  list-style: none;
+  list-style: none !important;   /* 🔥 risolve i puntini */
   display: flex;
   gap: 30px;
   margin: 0;
+  padding: 0;
   flex-wrap: wrap;
 }
 
