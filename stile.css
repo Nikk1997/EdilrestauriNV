@@ -433,6 +433,9 @@ footer a:hover {
     height: 20px;
     cursor: pointer;
     z-index: 2001;
+    list-style: none;  
+    padding: 0;        
+    margin: 0;        
   }
 
   .hamburger span {
@@ -441,6 +444,8 @@ footer a:hover {
     background: var(--petrolio);
     border-radius: 3px;
     transition: all 0.3s ease;
+    display: block;    
+    margin: 3px 0;  
   }
 
   /* ANIMAZIONE ICONE */
