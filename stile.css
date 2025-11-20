@@ -425,28 +425,30 @@ footer a:hover {
   }
 
   /* HAMBURGER ICON */
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 26px;
-    height: 20px;
-    cursor: pointer;
-    z-index: 2001;
-    list-style: none;  
-    padding: 0;        
-    margin: 0;        
-  }
+ .hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 2001;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: transparent; /* giusto per sicurezza */
+  border: none;
+}
 
-  .hamburger span {
-    height: 3px;
-    width: 100%;
-    background: var(--petrolio);
-    border-radius: 3px;
-    transition: all 0.3s ease;
-    display: block;    
-    margin: 3px 0;  
-  }
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--petrolio); /* colore linea */
+  border-radius: 3px;
+  margin: 4px 0; /* spazio tra linee */
+  transition: all 0.3s ease;
+}
 
   /* ANIMAZIONE ICONE */
   .hamburger.active span:nth-child(1) {
