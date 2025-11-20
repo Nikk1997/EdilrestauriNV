@@ -326,43 +326,6 @@ footer a:hover {
   }
 }
 
-@media (max-width: 768px) {
-  .logo {
-    height: 80px;
-  }
-
-  .nav-container {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .hero {
-    padding: 60px 20px;
-  }
-
-  .hero h1 {
-    font-size: 32px;
-  }
-
-  .hero h2 {
-    font-size: 16px;
-  }
-
-  .galleria-grid img {
-    height: 250px;
-  }
-
-  .servizi-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-
 @media (max-width: 480px) {
   .hero h1 {
     font-size: 28px;
