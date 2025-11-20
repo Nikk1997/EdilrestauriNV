@@ -122,14 +122,6 @@ body {
 }
 
 /* LINK */
-.nav-links {
-  list-style: none !important;   /* 🔥 risolve i puntini */
-  display: flex;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-}
 
 .nav-links a {
   text-decoration: none;
