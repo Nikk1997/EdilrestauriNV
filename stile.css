@@ -424,30 +424,37 @@ footer a:hover {
   }
 
   /* HAMBURGER ICON */
- .hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 26px;
-  height: 20px;
-  cursor: pointer;
-  z-index: 2001;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  border: none;
-}
+ @media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 2001;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
 
-.hamburger span {
+    /* QUESTE RIGHE AGGIUNTIVE */
+    position: fixed;
+    top: 15px;
+    right: 20px;
+  }
+
+  .hamburger span {
     display: block;
-    height: 4px;              /* linea più alta */
+    height: 3px;
     width: 100%;
-    background-color: red !important; /* linea rossa molto visibile */
-    border-radius: 0;         /* niente bordi arrotondati */
-    margin: 5px 0;            /* margini maggiori */
+    background-color: var(--petrolio);
+    border-radius: 3px;
+    margin: 4px 0;
     transition: all 0.3s ease;
   }
+}
 
   /* ANIMAZIONE ICONE */
   .hamburger.active span:nth-child(1) {
@@ -505,24 +512,6 @@ footer a:hover {
   .nav-links a:hover {
     color: var(--ocra);
     border-bottom: 2px solid var(--ocra);
-  }
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex !important;              /* Forza il bottone a mostrarsi */
-    background-color: yellow !important;   /* Sfondo giallo per vederlo bene */
-    border: 2px solid red !important;      /* Bordo rosso per distinguerlo */
-    width: 40px !important;                 /* Larghezza bottone */
-    height: 40px !important;                /* Altezza bottone */
-    position: fixed !important;             /* Lo fissa in alto a destra */
-    top: 10px !important;                   /* Distanza dal top */
-    right: 10px !important;                 /* Distanza da destra */
-    z-index: 9999 !important;               /* Lo mette sopra a tutto */
-  }
-
-  .hamburger span {
-    background-color: black !important;    /* Linee nere ben visibili */
-    height: 5px !important;                 /* Linee più spesse */
-    margin: 5px 0 !important;               /* Spaziatura tra linee */
   }
 }
 
