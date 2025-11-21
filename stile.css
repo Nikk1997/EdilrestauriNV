@@ -506,4 +506,23 @@ footer a:hover {
     color: var(--ocra);
     border-bottom: 2px solid var(--ocra);
   }
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex !important;              /* Forza il bottone a mostrarsi */
+    background-color: yellow !important;   /* Sfondo giallo per vederlo bene */
+    border: 2px solid red !important;      /* Bordo rosso per distinguerlo */
+    width: 40px !important;                 /* Larghezza bottone */
+    height: 40px !important;                /* Altezza bottone */
+    position: fixed !important;             /* Lo fissa in alto a destra */
+    top: 10px !important;                   /* Distanza dal top */
+    right: 10px !important;                 /* Distanza da destra */
+    z-index: 9999 !important;               /* Lo mette sopra a tutto */
+  }
+
+  .hamburger span {
+    background-color: black !important;    /* Linee nere ben visibili */
+    height: 5px !important;                 /* Linee più spesse */
+    margin: 5px 0 !important;               /* Spaziatura tra linee */
+  }
 }
+
