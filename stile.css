@@ -424,7 +424,7 @@ footer a:hover {
   }
 
   /* HAMBURGER ICON */
- @media (max-width: 768px) {
+@media (max-width: 768px) {
   .hamburger {
     display: flex;
     flex-direction: column;
@@ -439,10 +439,10 @@ footer a:hover {
     background: transparent;
     border: none;
 
-    /* QUESTE RIGHE AGGIUNTIVE */
-    position: fixed;
-    top: 15px;
-    right: 20px;
+    /* QUESTE RIGHE IMPORTANTI: */
+    position: fixed !important;
+    top: 15px !important;
+    right: 20px !important;
   }
 
   .hamburger span {
