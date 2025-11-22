@@ -447,7 +447,7 @@ footer a:hover {
   display: block !important;
   height: 4px !important;
   width: 100% !important;
-  background: red !important;
+  background: var(--petrolio) !important;
   border-radius: 4px;
   }
 
