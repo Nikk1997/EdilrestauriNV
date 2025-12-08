@@ -168,6 +168,24 @@ body {
   font-size: 28px;
   font-weight: 600;
 }
+.galleria-grid {
+  display: flex;
+  flex-wrap: nowrap; /* no wrap per scorrimento orizzontale */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; /* abilita lo snap orizzontale */
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  justify-content: flex-start;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling su iOS */
+}
+
+.galleria-grid .foto {
+  flex: 0 0 auto; /* larghezza fissa per ogni foto */
+  scroll-snap-align: start; /* punto di snap */
+  width: 300px; /* puoi regolare la larghezza */
+  max-width: 300px;
+}
 
 /* Contenitore scroll + frecce */
 .galleria-wrapper {
