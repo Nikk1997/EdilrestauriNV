@@ -172,5 +172,19 @@
     });
   });
 </script>
+  <script>
+  const scrollContainer = document.querySelector(".galleria-scroll");
+  const btnLeft = document.querySelector(".galleria-btn.left");
+  const btnRight = document.querySelector(".galleria-btn.right");
+
+  btnLeft.addEventListener("click", () => {
+    scrollContainer.scrollBy({ left: -300, behavior: "smooth" });
+  });
+
+  btnRight.addEventListener("click", () => {
+    scrollContainer.scrollBy({ left: 300, behavior: "smooth" });
+  });
+</script>
+
 </body>
 </html>
