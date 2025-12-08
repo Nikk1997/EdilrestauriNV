@@ -131,33 +131,44 @@
 
   <!-- SCRIPT -->
   <script>
-    // LIGHTBOX
-    const lightbox = document.getElementById('lightbox');
-    const immagini = document.querySelectorAll('.galleria-grid img');
-    const lightboxImg = lightbox.querySelector('img');
+  const scrollContainer = document.getElementById("galleria-scroll");
+  const fotos = document.querySelectorAll(".galleria-scroll .foto");
+  const btnLeft = document.querySelector(".galleria-btn.left");
+  const btnRight = document.querySelector(".galleria-btn.right");
 
-    immagini.forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-      });
+  let fotoWidth = 0;
+  
+  function updateWidth() {
+    fotoWidth = fotos[0].offsetWidth + 20; // larghezza foto + gap
+  }
+
+  updateWidth();
+  window.addEventListener("resize", updateWidth);
+
+  btnLeft.addEventListener("click", () => {
+    scrollContainer.scrollBy({ left: -fotoWidth, behavior: "smooth" });
+  });
+
+  btnRight.addEventListener("click", () => {
+    scrollContainer.scrollBy({ left: fotoWidth, behavior: "smooth" });
+  });
+
+  /* LIGHTBOX */
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  document.querySelectorAll(".foto img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = "flex";
+      lightboxImg.src = img.src;
     });
+  });
 
-    lightbox.addEventListener('click', () => {
-      lightbox.style.display = 'none';
-    });
-
-    // ANIMAZIONE SERVIZI SCROLL
-    const servizi = document.querySelectorAll('.servizio');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-        }
-      });
-    }, {threshold: 0.3});
-    servizi.forEach(s => observer.observe(s));
+  lightbox.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
 </script>
+
  <script>
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobile-nav');
