@@ -147,7 +147,26 @@
     lightbox.addEventListener('click', () => {
       lightbox.style.display = 'none';
     });
+// --- Gestione frecce per lightbox ---
+document.addEventListener('keydown', (e) => {
+  if (lightbox.style.display === 'flex') {
+    const immaginiArray = Array.from(immagini);
+    let currentIndex = immaginiArray.findIndex(img => img.src === lightboxImg.src);
 
+    if (e.key === 'ArrowRight') {
+      // freccia destra: vai all'immagine successiva
+      currentIndex = (currentIndex + 1) % immaginiArray.length;
+      lightboxImg.src = immaginiArray[currentIndex].src;
+    } else if (e.key === 'ArrowLeft') {
+      // freccia sinistra: vai all'immagine precedente
+      currentIndex = (currentIndex - 1 + immaginiArray.length) % immaginiArray.length;
+      lightboxImg.src = immaginiArray[currentIndex].src;
+    } else if (e.key === 'Escape') {
+      // esc chiude il lightbox
+      lightbox.style.display = 'none';
+    }
+  }
+});
     // ANIMAZIONE SERVIZI SCROLL
     const servizi = document.querySelectorAll('.servizio');
     const observer = new IntersectionObserver(entries => {
@@ -175,6 +194,7 @@
       navLinks.classList.remove('active');
     });
   });
+  
 </script>
 </body>
 </html>
