@@ -129,49 +129,73 @@
     </div>
   </footer>
  <!-- SCRIPT -->
-  <script>
-    // LIGHTBOX
-    const lightbox = document.getElementById('lightbox');
-    const immagini = document.querySelectorAll('.galleria-grid img');
-    const lightboxImg = lightbox.querySelector('img');
+ <script>
+  /* ------------------------------------------
+     LIGHTBOX MIGLIORATO
+  ------------------------------------------ */
+  const lightbox = document.getElementById('lightbox');
+  const immagini = document.querySelectorAll('.galleria-grid img');
+  const lightboxImg = lightbox.querySelector('img');
 
-    immagini.forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-      });
+  let currentIndex = 0;
+  const imagesArray = Array.from(immagini);
+
+  function showImage(index) {
+    currentIndex = index;
+    lightboxImg.src = imagesArray[index].src;
+    lightbox.style.display = "flex";
+  }
+
+  immagini.forEach((img, index) => {
+    img.addEventListener("click", () => showImage(index));
+  });
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) lightbox.style.display = "none";
+  });
+
+  document.getElementById("prev").addEventListener("click", (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + imagesArray.length) % imagesArray.length;
+    showImage(currentIndex);
+  });
+
+  document.getElementById("next").addEventListener("click", (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex + 1) % imagesArray.length;
+    showImage(currentIndex);
+  });
+
+  /* ------------------------------------------
+     ANIMAZIONE SCROLL SEZIONE SERVIZI
+  ------------------------------------------ */
+  const servizi = document.querySelectorAll('.servizio');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
     });
+  }, { threshold: 0.3 });
 
-    lightbox.addEventListener('click', () => {
-      lightbox.style.display = 'none';
+  servizi.forEach(s => observer.observe(s));
+
+  /* ------------------------------------------
+     MENU HAMBURGER MOBILE
+  ------------------------------------------ */
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
     });
-
-    // ANIMAZIONE SERVIZI SCROLL
-    const servizi = document.querySelectorAll('.servizio');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-        }
-      });
-    }, {threshold: 0.3});
-
-    servizi.forEach(s => observer.observe(s));
-  </script>
-<script>
- const hamburger = document.getElementById('hamburger');
-const mobileNav = document.getElementById('mobile-nav'); // <-- correggi qui!
-
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  mobileNav.classList.toggle('active');  // <-- qui cambia navLinks in mobileNav
-});
-
- document.querySelectorAll('.mobile-nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    mobileNav.classList.remove('active');
-   });
   });
 </script>
 </body>
