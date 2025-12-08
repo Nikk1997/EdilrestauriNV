@@ -128,23 +128,51 @@
       <p>&copy; 2025 EdilRestauri. Tutti i diritti riservati.</p>
     </div>
   </footer>
+ <!-- SCRIPT -->
+  <script>
+    // LIGHTBOX
+    const lightbox = document.getElementById('lightbox');
+    const immagini = document.querySelectorAll('.galleria-grid img');
+    const lightboxImg = lightbox.querySelector('img');
 
-  <!-- SCRIPT -->
+    immagini.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    // ANIMAZIONE SERVIZI SCROLL
+    const servizi = document.querySelectorAll('.servizio');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, {threshold: 0.3});
+
+    servizi.forEach(s => observer.observe(s));
+  </script>
 <script>
- const hamburger = document.getElementById('hamburger');
-const mobileNav = document.getElementById('mobile-nav');
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  mobileNav.classList.toggle('active');
-});
-
-document.querySelectorAll('.mobile-nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    mobileNav.classList.remove('active');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
   });
-});
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
 </script>
 </body>
 </html>
