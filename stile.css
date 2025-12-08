@@ -168,50 +168,117 @@ body {
   font-weight: 600; /* per un titolo più marcato */
 }
 
-.galleria-grid {
+.galleria-scroll {
   display: flex;
-  flex-wrap: wrap;
   gap: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-  justify-content: flex-start;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  max-width: 100%;
+  scrollbar-width: none; /* nasconde scrollbar su Firefox */
 }
 
-.galleria-grid .foto {
-  flex: 0 0 calc(33.333% - 13.33px);
-  max-width: calc(33.333% - 13.33px);
+.galleria-scroll::-webkit-scrollbar {
+  display: none; /* nasconde scrollbar su Chrome/Safari */
 }
 
-.galleria-grid .foto img {
+.galleria-scroll .foto {
+  flex: 0 0 auto; /* blocco largo quanto serve */
+  width: 250px;   /* puoi aumentare o diminuire */
+  scroll-snap-align: start;
+}
+
+.galleria-scroll .foto img {
   width: 100%;
-  aspect-ratio: 9 / 16;
+  height: 100%;
   object-fit: cover;
   border-radius: 16px;
   border: 3px solid var(--ocra);
-  cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.galleria-grid .foto img:hover {
+.galleria-scroll .foto img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+ /* Contenitore frecce + scroll */
+.galleria-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Scroll orizzontale */
+.galleria-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+}
+
+.galleria-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.galleria-scroll .foto {
+  flex: 0 0 auto;
+  width: 250px;
+  scroll-snap-align: start;
+}
+
+.galleria-scroll .foto img {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  border: 3px solid var(--ocra);
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.galleria-scroll .foto img:hover {
   transform: scale(1.04);
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
-/* Tablet */
-@media (max-width: 900px) {
-  .galleria-grid .foto {
-    flex: 0 0 calc(50% - 10px);
-    max-width: calc(50% - 10px);
+/* FRECCE */
+.galleria-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 15px;
+  background: var(--ocra);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: background 0.3s ease;
+}
+
+.galleria-btn:hover {
+  background: #c99700; /* ocra più scura */
+}
+
+.galleria-btn.left {
+  left: -15px;
+}
+
+.galleria-btn.right {
+  right: -15px;
+}
+
+/* Su mobile le frecce si rimpiccioliscono */
+@media (max-width: 768px) {
+  .galleria-btn {
+    padding: 6px 10px;
+    font-size: 16px;
   }
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .galleria-grid .foto {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-}
 
 /* LIGHTBOX */
 .lightbox {
