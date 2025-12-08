@@ -131,6 +131,19 @@
 
   <!-- SCRIPT -->
   <script>
+  const scrollContainer = document.querySelector(".galleria-scroll");
+  const btnLeft = document.querySelector(".galleria-btn.left");
+  const btnRight = document.querySelector(".galleria-btn.right");
+
+  btnLeft.addEventListener("click", () => {
+    scrollContainer.scrollBy({ left: -300, behavior: "smooth" });
+  });
+
+  btnRight.addEventListener("click", () => {
+    scrollContainer.scrollBy({ left: 300, behavior: "smooth" });
+  });
+</script>
+  <script>
   const scrollContainer = document.getElementById("galleria-scroll");
   const fotos = document.querySelectorAll(".galleria-scroll .foto");
   const btnLeft = document.querySelector(".galleria-btn.left");
@@ -168,7 +181,6 @@
     lightbox.style.display = "none";
   });
 </script>
-
  <script>
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobile-nav');
