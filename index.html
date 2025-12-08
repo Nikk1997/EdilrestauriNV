@@ -146,54 +146,48 @@ document.querySelectorAll('.mobile-nav a').forEach(link => {
   });
 });
 </script>
-  <script>
-    // LIGHTBOX
-    const lightbox = document.getElementById('lightbox');
-    const immagini = document.querySelectorAll('.galleria-grid img');
-    const lightboxImg = lightbox.querySelector('img');
+ <script>
+  // LIGHTBOX MIGLIORATO
+  const lightbox = document.getElementById('lightbox');
+  const immagini = document.querySelectorAll('.galleria-grid img');
+  const lightboxImg = lightbox.querySelector('img');
 
-    immagini.forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-      });
-    });
+  let currentIndex = 0;
+  const imagesArray = Array.from(immagini);
 
-    lightbox.addEventListener('click', () => {
-      lightbox.style.display = 'none';
-    });
-// --- Gestione frecce per lightbox ---
-document.addEventListener('keydown', (e) => {
-  if (lightbox.style.display === 'flex') {
-    const immaginiArray = Array.from(immagini);
-    let currentIndex = immaginiArray.findIndex(img => img.src === lightboxImg.src);
-
-    if (e.key === 'ArrowRight') {
-      // freccia destra: vai all'immagine successiva
-      currentIndex = (currentIndex + 1) % immaginiArray.length;
-      lightboxImg.src = immaginiArray[currentIndex].src;
-    } else if (e.key === 'ArrowLeft') {
-      // freccia sinistra: vai all'immagine precedente
-      currentIndex = (currentIndex - 1 + immaginiArray.length) % immaginiArray.length;
-      lightboxImg.src = immaginiArray[currentIndex].src;
-    } else if (e.key === 'Escape') {
-      // esc chiude il lightbox
-      lightbox.style.display = 'none';
-    }
+  function showImage(index) {
+    currentIndex = index;
+    lightboxImg.src = imagesArray[index].src;
+    lightbox.style.display = "flex";
   }
-});
-    // ANIMAZIONE SERVIZI SCROLL
-    const servizi = document.querySelectorAll('.servizio');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-        }
-      });
-    }, {threshold: 0.3});
 
-    servizi.forEach(s => observer.observe(s));
-  </script>
+  immagini.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      showImage(index);
+    });
+  });
+
+  // CHIUDI LIGHTBOX
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = "none";
+    }
+  });
+
+  // FRECCIA SINISTRA
+  document.getElementById("prev").addEventListener("click", (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + imagesArray.length) % imagesArray.length;
+    showImage(currentIndex);
+  });
+
+  // FRECCIA DESTRA
+  document.getElementById("next").addEventListener("click", (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex + 1) % imagesArray.length;
+    showImage(currentIndex);
+  });
+</script>
 
 </body>
 </html>
