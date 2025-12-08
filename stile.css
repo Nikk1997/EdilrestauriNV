@@ -155,6 +155,7 @@ body {
 }
 
 /* GALLERIA */
+
 .galleria {
   background: var(--avorio);
   text-align: center;
@@ -165,76 +166,45 @@ body {
   color: var(--petrolio);
   margin-bottom: 30px;
   font-size: 28px;
-  font-weight: 600; /* per un titolo più marcato */
+  font-weight: 600;
 }
 
-.galleria-scroll {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
-  max-width: 100%;
-  scrollbar-width: none; /* nasconde scrollbar su Firefox */
-}
-
-.galleria-scroll::-webkit-scrollbar {
-  display: none; /* nasconde scrollbar su Chrome/Safari */
-}
-
-.galleria-scroll .foto {
-  flex: 0 0 auto; /* blocco largo quanto serve */
-  width: 250px;   /* puoi aumentare o diminuire */
-  scroll-snap-align: start;
-}
-
-.galleria-scroll .foto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
-  border: 3px solid var(--ocra);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.galleria-scroll .foto img:hover {
-  transform: scale(1.04);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-}
- /* Contenitore frecce + scroll */
+/* Contenitore scroll + frecce */
 .galleria-wrapper {
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
 }
 
-/* Scroll orizzontale */
+/* SCROLL ORIZZONTALE */
 .galleria-scroll {
   display: flex;
   gap: 20px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding-bottom: 10px;
-  scrollbar-width: none;
+  scrollbar-width: none; /* Firefox */
 }
 
 .galleria-scroll::-webkit-scrollbar {
-  display: none;
+  display: none; /* Chrome/Safari */
 }
 
+/* Singola foto */
 .galleria-scroll .foto {
   flex: 0 0 auto;
-  width: 250px;
+  width: 250px;           /* larghezza card */
   scroll-snap-align: start;
 }
 
 .galleria-scroll .foto img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: 16px;
   border: 3px solid var(--ocra);
-  object-fit: cover;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .galleria-scroll .foto img:hover {
@@ -260,7 +230,7 @@ body {
 }
 
 .galleria-btn:hover {
-  background: #c99700; /* ocra più scura */
+  background: #c99700;
 }
 
 .galleria-btn.left {
@@ -271,14 +241,17 @@ body {
   right: -15px;
 }
 
-/* Su mobile le frecce si rimpiccioliscono */
+/* Mobile: frecce più piccole */
 @media (max-width: 768px) {
   .galleria-btn {
     padding: 6px 10px;
     font-size: 16px;
   }
-}
 
+  .galleria-scroll .foto {
+    width: 70%; /* card più grande per scorrere meglio */
+  }
+}
 
 /* LIGHTBOX */
 .lightbox {
