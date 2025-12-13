@@ -133,7 +133,7 @@
    <script>
     // LIGHTBOX
     const lightbox = document.getElementById('lightbox');
-    const immagini = document.querySelectorAll('.galleria-grid img');
+    const immagini = document.querySelectorAll('.galleria-scroll img');
     const lightboxImg = lightbox.querySelector('img');
 
     immagini.forEach(img => {
@@ -175,5 +175,30 @@ hamburger.addEventListener('click', () => {
    });
   });
 </script>
+  <script>
+  const gallery = document.querySelector('.galleria-scroll');
+  const btnLeft = document.querySelector('.galleria-btn.left');
+  const btnRight = document.querySelector('.galleria-btn.right');
+
+  const scrollAmount = () => {
+    const firstItem = gallery.querySelector('.foto');
+    return firstItem.offsetWidth + 20; // larghezza + gap
+  };
+
+  btnRight.addEventListener('click', () => {
+    gallery.scrollBy({
+      left: scrollAmount(),
+      behavior: 'smooth'
+    });
+  });
+
+  btnLeft.addEventListener('click', () => {
+    gallery.scrollBy({
+      left: -scrollAmount(),
+      behavior: 'smooth'
+    });
+  });
+</script>
+
 </body>
 </html>
