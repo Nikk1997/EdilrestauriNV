@@ -222,6 +222,7 @@ body {
 .galleria-scroll .foto {
   flex: 0 0 auto;
   width: 250px;           /* larghezza card */
+  overflow: hidden;  
   scroll-snap-align: start;
 }
 
