@@ -202,6 +202,7 @@ body {
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 /* SCROLL ORIZZONTALE */
