@@ -222,8 +222,8 @@ body {
 .galleria-scroll .foto {
   flex: 0 0 auto;
   width: 250px;           /* larghezza card */
-  overflow: hidden;  
-  scroll-snap-align: start;
+  overflow: hidden;        /* 🔥 FONDAMENTALE */
+  border-radius: 16px;     /* 🔥 uguale all’immagine */
 }
 
 .galleria-scroll .foto img {
@@ -235,14 +235,9 @@ body {
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.galleria-scroll .foto:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-}
-
-
 .galleria-scroll .foto img:hover {
-  transform: scale(1.04);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transform: scale(1.03);              /* zoom più elegante */
+  box-shadow: inset 0 0 0 0 transparent;
 }
 
 /* FRECCE */
@@ -281,11 +276,12 @@ body {
     font-size: 16px;
   }
 
+ @media (max-width: 768px) {
   .galleria-scroll .foto {
-    width: 70%; /* card più grande per scorrere meglio */
+    width: calc(100% - 40px);  /* 🔥 niente taglio */
+    margin: 0 20px;
   }
-  
- }
+}
 
 /* LIGHTBOX */
 .lightbox {
