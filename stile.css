@@ -276,11 +276,11 @@ body {
     font-size: 16px;
   }
 
- @media (max-width: 768px) {
   .galleria-scroll .foto {
     width: calc(100% - 40px);  /* 🔥 niente taglio */
     margin: 0 20px;
   }
+  
 }
 
 /* LIGHTBOX */
