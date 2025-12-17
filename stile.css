@@ -392,19 +392,6 @@ footer a:hover {
   }
 }
 
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 28px;
-  }
-
-  .hero h2 {
-    font-size: 14px;
-  }
-
-  .galleria-grid img {
-    height: 220px;
-  }
-}
   
 /* ======================
    ANIMAZIONI SCROLL
