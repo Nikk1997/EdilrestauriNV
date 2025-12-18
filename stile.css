@@ -8,14 +8,11 @@
   --max-width: 1100px;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; }
 
 body {
   font-family: 'Poppins', sans-serif;
+  margin: 0;
   background: var(--avorio);
   color: var(--cemento);
   line-height: 1.6;
@@ -35,10 +32,10 @@ body {
 .nav-container {
   max-width: var(--max-width);
   margin: auto;
-  padding: 12px 20px;
+  padding: 10px 20px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 .logo-container {
@@ -57,6 +54,8 @@ body {
   list-style: none;
   display: flex;
   gap: 30px;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links-desktop a {
@@ -69,64 +68,10 @@ body {
   color: var(--ocra);
 }
 
-/* ======================
-   HAMBURGER (NASCOSTO DESKTOP)
-   ====================== */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 26px;
-  height: 3px;
-  background: var(--petrolio);
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-/* ======================
-   MENU MOBILE
-   ====================== */
+/* Nascondiamo mobile su desktop */
+.hamburger,
 .mobile-nav {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 70%;
-  height: 100vh;
-  background: var(--avorio);
-  box-shadow: -4px 0 12px rgba(0,0,0,0.15);
-  display: flex;
-  justify-content: center;
-  padding: 30px;
-  transition: right 0.4s ease;
-  z-index: 2000;
-}
-
-.mobile-nav.active {
-  right: 0;
-}
-
-.nav-links-mobile {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-.nav-links-mobile a {
-  font-size: 20px;
-  font-weight: 600;
-  text-decoration: none;
-  color: var(--petrolio);
-  border-bottom: 2px solid transparent;
-}
-
-.nav-links-mobile a:hover {
-  color: var(--ocra);
-  border-bottom: 2px solid var(--ocra);
+  display: none;
 }
 
 /* ======================
@@ -135,8 +80,8 @@ body {
 .hero {
   background: var(--petrolio);
   color: var(--avorio);
-  text-align: center;
   padding: 100px 20px;
+  text-align: center;
 }
 
 .hero h1 {
@@ -146,6 +91,74 @@ body {
 
 .hero h2 {
   font-weight: 400;
+}
+
+/* ======================
+   GALLERIA
+   ====================== */
+.galleria {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.galleria-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.galleria-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.foto {
+  width: 250px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.foto img {
+  width: 100%;
+  border-radius: 16px;
+  border: 3px solid var(--ocra);
+}
+
+/* ======================
+   SERVIZI (ANIMAZIONE RIPRISTINATA)
+   ====================== */
+.servizi {
+  background: var(--petrolio);
+  color: var(--avorio);
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.servizi h2 {
+  color: var(--ocra);
+  margin-bottom: 40px;
+}
+
+.servizi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.servizio {
+  background: rgba(255,255,255,0.08);
+  border: 2px solid var(--ocra);
+  border-radius: 12px;
+  padding: 25px;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.servizio.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ======================
@@ -161,53 +174,35 @@ body {
 }
 
 .cta-container h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
   color: gold;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .cta-container p {
-  font-size: 1.1rem;
   max-width: 700px;
   margin: 0 auto 30px;
-  line-height: 1.6;
   color: #ddd;
 }
 
 .cta-button {
-  background-color: gold;
+  background: gold;
   color: #1e1e1e;
   padding: 14px 36px;
   border-radius: 40px;
   font-weight: 700;
-  text-transform: uppercase;
   text-decoration: none;
-  transition: all 0.3s ease;
-  display: inline-block;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 0 15px rgba(255,215,0,0.4);
 }
 
 .cta-button:hover {
-  background-color: #f5c400;
   transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
 }
 
 /* ======================
-   MOBILE
+   FOOTER
    ====================== */
-@media (max-width: 768px) {
-
-  .nav-links-desktop {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-}
-
+footer {
+  background: var(--petrolio);
+  color: va
 
