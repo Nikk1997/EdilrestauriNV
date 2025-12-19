@@ -132,21 +132,25 @@
   </footer>
  <!-- SCRIPT -->
    <script>
-  const lightbox = document.getElementById('lightbox');
-const immagini = document.querySelectorAll('.galleria-scroll img');
+ const lightbox = document.getElementById('lightbox');
 const lightboxImg = lightbox.querySelector('img');
+const galleryImages = document.querySelectorAll('.galleria-scroll img');
 
-immagini.forEach(img => {
+galleryImages.forEach(img => {
+  img.style.cursor = 'zoom-in'; // fa capire che si può cliccare
+
   img.addEventListener('click', () => {
-    lightbox.classList.add('active');
     lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt || '';
+    lightboxImg.alt = img.alt || 'Anteprima immagine';
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // blocca lo scroll della pagina mentre è aperto
   });
 });
 
 lightbox.addEventListener('click', () => {
   lightbox.classList.remove('active');
   lightboxImg.src = '';
+  document.body.style.overflow = ''; // riabilita lo scroll
 });
 
     // ANIMAZIONE SERVIZI SCROLL
