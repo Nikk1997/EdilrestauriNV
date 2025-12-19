@@ -133,33 +133,23 @@
     </div>
   </footer>
  <!-- SCRIPT -->
-   <script>
- // seleziono lightbox e immagine dentro
+<script>
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 
-// prendo tutte le immagini dentro la galleria
-const galleryImages = document.querySelectorAll('.galleria-scroll img');
-
-galleryImages.forEach(img => {
-  img.style.cursor = 'pointer'; // fai capire che si può cliccare
+document.querySelectorAll('.galleria-scroll img').forEach(img => {
   img.addEventListener('click', () => {
     lightboxImg.src = img.src;
     lightbox.style.display = 'flex';
-    lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden'; // blocca scroll pagina
+    document.body.style.overflow = 'hidden';
   });
 });
 
-// chiudo lightbox cliccando sull'overlay (fuori immagine)
-lightbox.addEventListener('click', (e) => {
-  if (e.target !== lightboxImg) {
-    lightbox.style.display = 'none';
-    lightbox.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = ''; // sblocca scroll pagina
-  }
+lightbox.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+  lightboxImg.src = '';
+  document.body.style.overflow = '';
 });
-
 
     // ANIMAZIONE SERVIZI SCROLL
     const servizi = document.querySelectorAll('.servizio');
@@ -173,6 +163,7 @@ lightbox.addEventListener('click', (e) => {
 
     servizi.forEach(s => observer.observe(s));
   </script>
+  
 <script>
  const hamburger = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobile-nav'); // <-- correggi qui!
