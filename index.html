@@ -131,21 +131,22 @@
   </footer>
  <!-- SCRIPT -->
    <script>
-   const lightbox = document.getElementById('lightbox');
-   const immagini = document.querySelectorAll('.galleria-scroll img');
-   const lightboxImg = lightbox.querySelector('img');
+  const lightbox = document.getElementById('lightbox');
+const immagini = document.querySelectorAll('.galleria-scroll img');
+const lightboxImg = lightbox.querySelector('img');
 
-   immagini.forEach(img => {
-    img.addEventListener('click', () => {
-     lightbox.classList.add('active');
-     lightboxImg.src = img.src;
+immagini.forEach(img => {
+  img.addEventListener('click', () => {
+    lightbox.classList.add('active');
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt || '';
   });
 });
 
 lightbox.addEventListener('click', () => {
   lightbox.classList.remove('active');
+  lightboxImg.src = '';
 });
-
 
     // ANIMAZIONE SERVIZI SCROLL
     const servizi = document.querySelectorAll('.servizio');
