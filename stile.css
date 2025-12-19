@@ -171,9 +171,6 @@ body {
 .hero h2 {
   font-weight: 400;
   font-size: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  line-height: 1.4;
   opacity: 0.9;
 }
 
@@ -313,8 +310,6 @@ body {
 .servizio h3 {
   color: var(--ocra);
   margin-bottom: 10px;
-  font-weight: 600;
-  font-size: 20px;
 }
 
 /* CTA */
