@@ -133,26 +133,32 @@
   </footer>
  <!-- SCRIPT -->
    <script>
- const lightbox = document.getElementById('lightbox');
-const lightboxImg = lightbox.querySelector('img');
+ // seleziono lightbox e immagine dentro
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+// prendo tutte le immagini dentro la galleria
 const galleryImages = document.querySelectorAll('.galleria-scroll img');
 
 galleryImages.forEach(img => {
-  img.style.cursor = 'zoom-in'; // fa capire che si può cliccare
-
+  img.style.cursor = 'pointer'; // fai capire che si può cliccare
   img.addEventListener('click', () => {
     lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt || 'Anteprima immagine';
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden'; // blocca lo scroll della pagina mentre è aperto
+    lightbox.style.display = 'flex';
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // blocca scroll pagina
   });
 });
 
-lightbox.addEventListener('click', () => {
-  lightbox.classList.remove('active');
-  lightboxImg.src = '';
-  document.body.style.overflow = ''; // riabilita lo scroll
+// chiudo lightbox cliccando sull'overlay (fuori immagine)
+lightbox.addEventListener('click', (e) => {
+  if (e.target !== lightboxImg) {
+    lightbox.style.display = 'none';
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = ''; // sblocca scroll pagina
+  }
 });
+
 
     // ANIMAZIONE SERVIZI SCROLL
     const servizi = document.querySelectorAll('.servizio');
