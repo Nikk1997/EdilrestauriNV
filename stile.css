@@ -460,29 +460,4 @@ footer a:focus {
   .hero h2 {
     font-size: 14px;
   }
-}
-.lightbox {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.85);
-  justify-content: center;
-  align-items: center;
-  cursor: zoom-out;
-  z-index: 15000;
-  user-select: none;
-}
 
-.lightbox.active {
-  display: flex;
-}
-
-.lightbox img {
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: 12px;
-  box-shadow: 0 0 40px rgba(0,0,0,0.8);
-  user-select: none;
-}
