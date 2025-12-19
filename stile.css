@@ -6,96 +6,178 @@
   --ocra: #E1B12C;
   --cemento: #5C5C5C;
   --max-width: 1100px;
+  --transition-fast: 0.25s ease-in-out;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: 'Poppins', sans-serif;
-  margin: 0;
   background: var(--avorio);
   color: var(--cemento);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ======================
-   NAVBAR DESKTOP
-   ====================== */
+/* CONTAINER */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px 30px;
+}
+
+/* NAVBAR */
 .navbar {
   position: sticky;
   top: 0;
   background: var(--avorio);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   z-index: 1000;
 }
 
 .nav-container {
-  max-width: var(--max-width);
-  margin: auto;
-  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 10px 20px;
 }
 
+/* Logo */
 .logo-container {
   border: 2px solid var(--ocra);
   border-radius: 12px;
-  padding: 6px 10px;
+  padding: 6px 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: #fff;
+  transition: box-shadow var(--transition-fast);
+}
+
+.logo-container:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .logo {
   height: 70px;
   display: block;
+  user-select: none;
 }
 
-/* MENU DESKTOP */
-.nav-links-desktop {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  margin: 0;
+/* HAMBURGER (Mobile) */
+.hamburger {
+  display: none; /* Hidden on desktop */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2001;
   padding: 0;
 }
 
-.nav-links-desktop a {
-  text-decoration: none;
-  color: var(--petrolio);
-  font-weight: 600;
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--petrolio);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  will-change: transform, opacity;
 }
 
-.nav-links-desktop a:hover {
-  color: var(--ocra);
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
 }
 
-/* Nascondiamo mobile su desktop */
-.hamburger,
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* MOBILE NAVIGATION */
 .mobile-nav {
   display: none;
 }
 
-/* ======================
-   HERO
-   ====================== */
+.mobile-nav.active {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100vh;
+  background: var(--avorio);
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 40px;
+  box-shadow: -4px 0 16px rgba(0,0,0,0.15);
+  z-index: 2000;
+  transition: transform 0.4s ease;
+  transform: translateX(0);
+}
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.mobile-nav a {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--petrolio);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  user-select: none;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a:focus {
+  color: var(--ocra);
+  outline: none;
+}
+
+/* HERO */
 .hero {
   background: var(--petrolio);
   color: var(--avorio);
   padding: 100px 20px;
   text-align: center;
+  user-select: none;
 }
 
 .hero h1 {
   color: #f5c400;
   font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
 }
 
 .hero h2 {
   font-weight: 400;
+  font-size: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.4;
+  opacity: 0.9;
 }
 
-/* ======================
-   GALLERIA
-   ====================== */
+/* GALLERIA */
 .galleria {
   padding: 60px 20px;
   text-align: center;
@@ -103,7 +185,8 @@ body {
 
 .galleria-wrapper {
   position: relative;
-  max-width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .galleria-scroll {
@@ -112,6 +195,7 @@ body {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  padding-bottom: 10px;
 }
 
 .galleria-scroll::-webkit-scrollbar {
@@ -122,57 +206,82 @@ body {
   width: 250px;
   flex: 0 0 auto;
   scroll-snap-align: start;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  user-select: none;
 }
 
 .foto img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 16px;
   border: 3px solid var(--ocra);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.foto img:hover,
+.foto img:focus {
+  transform: scale(1.04);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  outline: none;
+  cursor: pointer;
 }
 
 /* FRECCE GALLERIA */
-.galleria-arrow {
+.galleria-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--petrolio);
-  color: var(--avorio);
-  border: none;
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  font-size: 22px;
+  border: none;
+  background: var(--petrolio);
+  color: var(--avorio);
+  font-size: 26px;
+  line-height: 1;
   cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  user-select: none;
+  transition: background-color 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   z-index: 10;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.galleria-arrow.left {
-  left: 10px;
+.galleria-btn.left {
+  left: -15px;
 }
 
-.galleria-arrow.right {
-  right: 10px;
+.galleria-btn.right {
+  right: -15px;
 }
 
-.galleria-arrow:hover {
+.galleria-btn:hover,
+.galleria-btn:focus {
   background: var(--ocra);
   color: #000;
+  outline: none;
 }
 
-/* ======================
-   SERVIZI (animazione a comparsa)
-   ====================== */
+/* SERVIZI */
 .servizi {
   background: var(--petrolio);
   color: var(--avorio);
   padding: 80px 20px;
   text-align: center;
+  user-select: none;
 }
 
 .servizi h2 {
   color: var(--ocra);
   margin-bottom: 40px;
+  font-weight: 700;
+  font-size: 28px;
 }
 
 .servizi-grid {
@@ -182,13 +291,14 @@ body {
 }
 
 .servizio {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   border: 2px solid var(--ocra);
   border-radius: 12px;
   padding: 25px;
   opacity: 0;
   transform: translateY(25px);
   transition: opacity 0.6s ease, transform 0.6s ease;
+  cursor: default;
 }
 
 .servizio.show {
@@ -196,9 +306,14 @@ body {
   transform: translateY(0);
 }
 
-/* ======================
-   CTA (INVARIATA)
-   ====================== */
+.servizio h3 {
+  color: var(--ocra);
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* CTA */
 .cta-section {
   background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
   color: #fff;
@@ -206,18 +321,28 @@ body {
   padding: 80px 20px;
   border-top: 2px solid gold;
   border-bottom: 2px solid gold;
+  user-select: none;
+}
+
+.cta-container {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .cta-container h2 {
   color: gold;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-size: 2.25rem;
+  margin-bottom: 20px;
 }
 
 .cta-container p {
-  max-width: 700px;
-  margin: 0 auto 30px;
+  font-size: 1.1rem;
+  line-height: 1.6;
   color: #ddd;
+  margin-bottom: 30px;
 }
 
 .cta-button {
@@ -227,50 +352,77 @@ body {
   border-radius: 40px;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 0 15px rgba(255,215,0,0.4);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  user-select: none;
 }
 
-.cta-button:hover {
+.cta-button:hover,
+.cta-button:focus {
+  background-color: #f5c400;
   transform: scale(1.05);
+  outline: none;
 }
 
-/* ======================
-   FOOTER
-   ====================== */
+/* FOOTER */
 footer {
   background: var(--petrolio);
   color: var(--avorio);
   text-align: center;
   padding: 30px 10px;
+  font-size: 15px;
+  user-select: none;
+}
+
+footer a {
+  color: var(--ocra);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover,
+footer a:focus {
+  color: #f5c400;
+  text-decoration: underline;
+  outline: none;
 }
 
 /* ======================
-   MOBILE
+   MEDIA QUERIES
    ====================== */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 80px 20px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero h2 {
+    font-size: 18px;
+  }
+
+  .servizi-grid {
+    gap: 20px;
+  }
+}
+
 @media (max-width: 768px) {
 
-  /* menu desktop off */
-  .nav-links-desktop {
-    display: none;
+  .nav-container {
+    padding: 10px 15px;
   }
 
-  /* hamburger */
+  .logo {
+    height: 60px;
+  }
+
   .hamburger {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    z-index: 2001;
   }
 
-  .hamburger span {
-    width: 26px;
-    height: 3px;
-    background: var(--petrolio);
-    border-radius: 3px;
-  }
-
-  /* menu mobile */
   .mobile-nav {
     display: flex;
     position: fixed;
@@ -279,27 +431,39 @@ footer {
     width: 70%;
     height: 100vh;
     background: var(--avorio);
-    padding: 30px;
     flex-direction: column;
     justify-content: center;
+    padding: 30px 40px;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.15);
     transition: right 0.4s ease;
     z-index: 2000;
+    user-select: none;
   }
 
   .mobile-nav.active {
     right: 0;
   }
 
-  .mobile-nav a {
-    font-size: 20px;
-    color: var(--petrolio);
-    text-decoration: none;
-    font-weight: 600;
+  .mobile-nav ul {
+    gap: 25px;
   }
 
-  /* frecce galleria off su mobile */
-  .galleria-arrow {
+  /* FRECCE GALLERIA DISATTIVATE MOBILE */
+  .galleria-btn {
     display: none;
   }
 }
 
+@media (max-width: 480px) {
+  .hero {
+    padding: 60px 15px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero h2 {
+    font-size: 14px;
+  }
+}
