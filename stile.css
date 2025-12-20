@@ -69,6 +69,43 @@ body {
   user-select: none;
 }
 
+/* MENU DESKTOP */
+.nav-desktop {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-desktop a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--petrolio);
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-desktop a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--ocra);
+  transition: width 0.3s ease;
+}
+
+.nav-desktop a:hover::after {
+  width: 100%;
+}
+
+/* MOBILE: nasconde menu desktop */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+}
+
+
 /* HAMBURGER (Mobile) */
 .hamburger {
   display: none; /* Hidden on desktop */
