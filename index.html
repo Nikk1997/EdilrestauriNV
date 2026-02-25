@@ -16,20 +16,21 @@
       <img src="img/logo.png" alt="EdilRestauri Logo" class="logo">
     </div>
 
-<nav class="nav-desktop">
-  <a href="#home">Home</a>
-  <a href="#galleria">Lavori</a>
-  <a href="#servizi">Servizi</a>
-  <a href="#contatti">Contatti</a>
-</nav>
-    <!-- HAMBURGER ICON -->
-  <button class="hamburger" id="hamburger">
-     <span></span>
-     <span></span>
-     <span></span>
-  </button>
+    <nav class="nav-desktop">
+      <a href="#home">Home</a>
+      <a href="#galleria">Lavori</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
 
-    <!-- MENU (sarebbe visibile su desktop se vuoi, qui è il mobile drawer) -->
+    <!-- HAMBURGER ICON -->
+    <button class="hamburger" id="hamburger">
+       <span></span>
+       <span></span>
+       <span></span>
+    </button>
+
+    <!-- MOBILE NAV -->
     <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
       <ul id="nav-links" class="nav-links">
         <li><a href="#home">Home</a></li>
@@ -41,7 +42,6 @@
   </div>
 </header>
 
-
   <!-- HERO -->
   <section id="home" class="hero">
     <div class="container">
@@ -52,32 +52,37 @@
 
   <!-- GALLERIA -->
   <section id="galleria" class="galleria">
-  <div class="container">
-    <h2>I nostri lavori</h2>
+    <div class="container">
+      <h2>I nostri lavori</h2>
+      <div class="galleria-wrapper">
+        <button class="galleria-btn left">&#10094;</button>
 
-    <div class="galleria-wrapper">
-      <button class="galleria-btn left">&#10094;</button>
+        <div class="galleria-scroll">
+          <div class="foto"><img src="img/foto1.jpg"></div>
+          <div class="foto"><img src="img/foto2.jpg"></div>
+          <div class="foto"><img src="img/foto3.jpg"></div>
+          <div class="foto"><img src="img/foto4.jpg"></div>
+          <div class="foto"><img src="img/foto5.jpg"></div>
+          <div class="foto"><img src="img/foto6.jpg"></div>
+          <div class="foto"><img src="img/foto7.png"></div>
+          <div class="foto"><img src="img/foto8.jpg"></div>
+          <!-- VIDEO INTEGRATO -->
+          <div class="foto">
+            <video controls>
+              <source src="video/video1.mp4" type="video/mp4">
+              Il tuo browser non supporta il video.
+            </video>
+          </div>
+        </div>
 
-      <div class="galleria-scroll">
-        <div class="foto"><img src="img/foto1.jpg"></div>
-        <div class="foto"><img src="img/foto2.jpg"></div>
-        <div class="foto"><img src="img/foto3.jpg"></div>
-        <div class="foto"><img src="img/foto4.jpg"></div>
-        <div class="foto"><img src="img/foto5.jpg"></div>
-        <div class="foto"><img src="img/foto6.jpg"></div>
-        <div class="foto"><img src="img/foto7.png"></div>
-        <div class="foto"><img src="img/foto8.jpg"></div>
+        <button class="galleria-btn right">&#10095;</button>
       </div>
-
-      <button class="galleria-btn right">&#10095;</button>
     </div>
+  </section>
 
-  </div>
-</section>
-
-   <!-- LIGHTBOX -->
+  <!-- LIGHTBOX -->
   <div id="lightbox">
-   <img id="lightbox-img">
+    <img id="lightbox-img">
   </div>
 
   <!-- SERVIZI -->
@@ -112,17 +117,15 @@
       </div>
     </div>
   </section>
-  
-   <!-- CTA-->
-  <section class="cta-section">
-  <div class="cta-container">
-    <h2>Hai un progetto in mente?</h2>
-    <p>Affidati a EdilRestauriNV per un sopralluogo gratuito e un preventivo personalizzato.  
-    Professionalità, trasparenza e risultati di alta qualità garantiti.</p>
-    <a href="mailto:edilrestaurinv@gmail.com" class="cta-button">Richiedi un preventivo</a>
-  </div>
-</section>
 
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <h2>Hai un progetto in mente?</h2>
+      <p>Affidati a EdilRestauriNV per un sopralluogo gratuito e un preventivo personalizzato. Professionalità, trasparenza e risultati di alta qualità garantiti.</p>
+      <a href="mailto:edilrestaurinv@gmail.com" class="cta-button">Richiedi un preventivo</a>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer id="contatti">
@@ -133,8 +136,10 @@
       <p>&copy; 2025 EdilRestauri. Tutti i diritti riservati.</p>
     </div>
   </footer>
- <!-- SCRIPT -->
+
+<!-- SCRIPT -->
 <script>
+// LIGHTBOX IMMAGINI
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 
@@ -152,58 +157,50 @@ lightbox.addEventListener('click', () => {
   document.body.style.overflow = '';
 });
 
-    // ANIMAZIONE SERVIZI SCROLL
-    const servizi = document.querySelectorAll('.servizio');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-        }
-      });
-    }, {threshold: 0.3});
+// ANIMAZIONE SERVIZI
+const servizi = document.querySelectorAll('.servizio');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, {threshold:0.3});
+servizi.forEach(s => observer.observe(s));
 
-    servizi.forEach(s => observer.observe(s));
-  </script>
-  
-<script>
- const hamburger = document.getElementById('hamburger');
-const mobileNav = document.getElementById('mobile-nav'); // <-- correggi qui!
+// HAMBURGER
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
 
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
-  mobileNav.classList.toggle('active');  // <-- qui cambia navLinks in mobileNav
+  mobileNav.classList.toggle('active');
 });
 
- document.querySelectorAll('.mobile-nav a').forEach(link => {
+document.querySelectorAll('.mobile-nav a').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('active');
     mobileNav.classList.remove('active');
-   });
   });
-</script>
-  <script>
-  const gallery = document.querySelector('.galleria-scroll');
-  const btnLeft = document.querySelector('.galleria-btn.left');
-  const btnRight = document.querySelector('.galleria-btn.right');
+});
 
-  const scrollAmount = () => {
-    const firstItem = gallery.querySelector('.foto');
-    return firstItem.offsetWidth + 20; // larghezza + gap
-  };
+// SCROLL GALLERIA
+const gallery = document.querySelector('.galleria-scroll');
+const btnLeft = document.querySelector('.galleria-btn.left');
+const btnRight = document.querySelector('.galleria-btn.right');
 
-  btnRight.addEventListener('click', () => {
-    gallery.scrollBy({
-      left: scrollAmount(),
-      behavior: 'smooth'
-    });
-  });
+const scrollAmount = () => {
+  const firstItem = gallery.querySelector('.foto');
+  return firstItem.offsetWidth + 20; // larghezza + gap
+};
 
-  btnLeft.addEventListener('click', () => {
-    gallery.scrollBy({
-      left: -scrollAmount(),
-      behavior: 'smooth'
-    });
-  });
+btnRight.addEventListener('click', () => {
+  gallery.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+});
+
+btnLeft.addEventListener('click', () => {
+  gallery.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+});
 </script>
 
 </body>
