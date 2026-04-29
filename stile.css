@@ -257,7 +257,9 @@ body {
   object-fit: cover;
   border-radius: 16px;
   border: 3px solid var(--ocra);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  background: black;
+  cursor: pointer;
 }
 
 .foto img:hover,
@@ -473,6 +475,10 @@ footer a:focus {
 
   .logo {
     height: 60px;
+  }
+
+  .hero {
+    padding-top: 140px;
   }
 
   .hamburger {
