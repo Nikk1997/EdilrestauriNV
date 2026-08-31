@@ -542,3 +542,147 @@ footer a:focus {
   transform: scale(1.04);
   box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
+/* ==========================================
+   LIGHTBOX GALLERIA COMPLETA
+   FOTO + VIDEO
+   ========================================== */
+
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  overflow: hidden;
+}
+
+#lightbox-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 70px;
+}
+
+#lightbox-img,
+#lightbox-video {
+  max-width: 95vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 3px solid var(--ocra);
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+}
+
+#lightbox-video {
+  display: none;
+  background: #000;
+}
+
+/* FRECCE FULLSCREEN */
+
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  background: var(--petrolio);
+  color: var(--avorio);
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1000001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+#lightbox-prev {
+  left: 20px;
+}
+
+#lightbox-next {
+  right: 20px;
+}
+
+.lightbox-btn:hover,
+.lightbox-btn:focus {
+  background: var(--ocra);
+  color: #000;
+  outline: none;
+}
+
+/* CHIUSURA */
+
+#lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: var(--petrolio);
+  color: var(--avorio);
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1000002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#lightbox-close:hover,
+#lightbox-close:focus {
+  background: var(--ocra);
+  color: #000;
+  outline: none;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  #lightbox-content {
+    padding: 50px 45px;
+  }
+
+  #lightbox-img,
+  #lightbox-video {
+    max-width: 90vw;
+    max-height: 82vh;
+  }
+
+  .lightbox-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 24px;
+  }
+
+  #lightbox-prev {
+    left: 8px;
+  }
+
+  #lightbox-next {
+    right: 8px;
+  }
+
+  #lightbox-close {
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 29px;
+  }
+}
