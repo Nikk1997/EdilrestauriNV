@@ -107,10 +107,31 @@
   </div>
 </section>
 
-  <!-- LIGHTBOX -->
-  <div id="lightbox">
-    <img id="lightbox-img">
+ <!-- LIGHTBOX GALLERIA -->
+<div id="lightbox">
+
+  <button id="lightbox-prev" class="lightbox-btn" aria-label="Elemento precedente">
+    &#10094;
+  </button>
+
+  <div id="lightbox-content">
+    <img id="lightbox-img" alt="Lavoro EdilRestauri">
+
+    <video id="lightbox-video" controls playsinline preload="metadata">
+      <source id="lightbox-video-source" src="" type="video/mp4">
+      Il tuo browser non supporta il video.
+    </video>
   </div>
+
+  <button id="lightbox-next" class="lightbox-btn" aria-label="Elemento successivo">
+    &#10095;
+  </button>
+
+  <button id="lightbox-close" aria-label="Chiudi">
+    &times;
+  </button>
+
+</div>
 
   <!-- SERVIZI -->
   <section id="servizi" class="servizi">
