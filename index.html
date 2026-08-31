@@ -187,24 +187,286 @@
 
 <!-- SCRIPT -->
 <script>
-// LIGHTBOX IMMAGINI
+
+/* ==========================================
+   LIGHTBOX GALLERIA
+   FOTO + VIDEO + FRECCE + SWIPE
+   ========================================== */
+
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
+const lightboxVideo = document.getElementById('lightbox-video');
+const lightboxVideoSource = document.getElementById('lightbox-video-source');
 
-document.querySelectorAll('.galleria-scroll img').forEach(img => {
-  img.addEventListener('click', () => {
+const lightboxPrev = document.getElementById('lightbox-prev');
+const lightboxNext = document.getElementById('lightbox-next');
+const lightboxClose = document.getElementById('lightbox-close');
+
+const galleryItems = document.querySelectorAll('.galleria-scroll .foto');
+
+let currentIndex = 0;
+
+
+/* APRI ELEMENTO */
+
+function openLightbox(index) {
+
+  currentIndex = index;
+
+  const item = galleryItems[currentIndex];
+
+  if (!item) return;
+
+  const img = item.querySelector('img');
+  const video = item.querySelector('video');
+
+  /* Nasconde entrambi */
+
+  lightboxImg.style.display = 'none';
+  lightboxVideo.style.display = 'none';
+
+  /* FOTO */
+
+  if (img) {
+
     lightboxImg.src = img.src;
-    lightbox.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  });
-});
+    lightboxImg.style.display = 'block';
 
-lightbox.addEventListener('click', () => {
+  }
+
+  /* VIDEO */
+
+  if (video) {
+
+    const source = video.querySelector('source');
+
+    if (source) {
+
+      lightboxVideoSource.src = source.src;
+      lightboxVideo.load();
+
+      lightboxVideo.style.display = 'block';
+
+    }
+  }
+
+  lightbox.style.display = 'flex';
+
+  document.body.style.overflow = 'hidden';
+}
+
+
+/* CHIUDI */
+
+function closeLightbox() {
+
   lightbox.style.display = 'none';
+
   lightboxImg.src = '';
+
+  lightboxVideo.pause();
+  lightboxVideoSource.src = '';
+  lightboxVideo.load();
+
   document.body.style.overflow = '';
+
+}
+
+
+/* ELEMENTO SUCCESSIVO */
+
+function nextItem() {
+
+  currentIndex++;
+
+  if (currentIndex >= galleryItems.length) {
+    currentIndex = 0;
+  }
+
+  openLightbox(currentIndex);
+}
+
+
+/* ELEMENTO PRECEDENTE */
+
+function previousItem() {
+
+  currentIndex--;
+
+  if (currentIndex < 0) {
+    currentIndex = galleryItems.length - 1;
+  }
+
+  openLightbox(currentIndex);
+}
+
+
+/* CLICK SULLE FOTO */
+
+galleryItems.forEach((item, index) => {
+
+  const img = item.querySelector('img');
+
+  if (img) {
+
+    img.addEventListener('click', () => {
+      openLightbox(index);
+    });
+
+  }
+
 });
 
+
+/* CLICK SUL VIDEO */
+
+galleryItems.forEach((item, index) => {
+
+  const video = item.querySelector('video');
+
+  if (video) {
+
+    video.addEventListener('click', (event) => {
+
+      /*
+       * Se il video è già nella galleria,
+       * apriamo il fullscreen.
+       */
+
+      event.preventDefault();
+
+      openLightbox(index);
+
+    });
+
+  }
+
+});
+
+
+/* FRECCE */
+
+lightboxNext.addEventListener('click', (event) => {
+
+  event.stopPropagation();
+
+  nextItem();
+
+});
+
+
+lightboxPrev.addEventListener('click', (event) => {
+
+  event.stopPropagation();
+
+  previousItem();
+
+});
+
+
+/* CHIUDI CON X */
+
+lightboxClose.addEventListener('click', (event) => {
+
+  event.stopPropagation();
+
+  closeLightbox();
+
+});
+
+
+/* CLICK SULLO SFONDO */
+
+lightbox.addEventListener('click', (event) => {
+
+  if (event.target === lightbox) {
+    closeLightbox();
+  }
+
+});
+
+
+/* TASTIERA DESKTOP */
+
+document.addEventListener('keydown', (event) => {
+
+  if (lightbox.style.display !== 'flex') return;
+
+  if (event.key === 'ArrowRight') {
+    nextItem();
+  }
+
+  if (event.key === 'ArrowLeft') {
+    previousItem();
+  }
+
+  if (event.key === 'Escape') {
+    closeLightbox();
+  }
+
+});
+
+
+/* ==========================================
+   SWIPE MOBILE
+   ========================================== */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+lightbox.addEventListener('touchstart', (event) => {
+
+  touchStartX = event.changedTouches[0].screenX;
+
+}, { passive: true });
+
+
+lightbox.addEventListener('touchend', (event) => {
+
+  touchEndX = event.changedTouches[0].screenX;
+
+  const difference = touchEndX - touchStartX;
+
+  /* Swipe verso sinistra = successivo */
+
+  if (difference < -50) {
+    nextItem();
+  }
+
+  /* Swipe verso destra = precedente */
+
+  if (difference > 50) {
+    previousItem();
+  }
+
+}, { passive: true });
+
+
+/* ==========================================
+   ANIMAZIONE SERVIZI
+   ========================================== */
+
+const servizi = document.querySelectorAll('.servizio');
+
+const observer = new IntersectionObserver(entries => {
+
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+
+      entry.target.classList.add('show');
+
+    }
+
+  });
+
+}, { threshold: 0.3 });
+
+
+servizi.forEach(s => observer.observe(s));
+
+</script>
+<script>
 // ANIMAZIONE SERVIZI
 const servizi = document.querySelectorAll('.servizio');
 const observer = new IntersectionObserver(entries => {
