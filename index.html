@@ -119,7 +119,9 @@
   </button>
 
   <div id="lightbox-content">
-    <img id="lightbox-img" alt="Lavoro EdilRestauri">
+    <div id="lightbox-image-viewport">
+      <img id="lightbox-img" alt="Lavoro EdilRestauri">
+    </div>
 
     <video id="lightbox-video" controls playsinline preload="metadata">
       <source id="lightbox-video-source" src="" type="video/mp4">
@@ -211,6 +213,19 @@ const galleryItems = document.querySelectorAll('.galleria-scroll .foto');
 
 let currentIndex = 0;
 
+/* ZOOM E MOVIMENTO DELLE FOTO NEL LIGHTBOX */
+const imageViewport = document.getElementById('lightbox-image-viewport');
+let imageScale = 1;
+let imageX = 0;
+let imageY = 0;
+let activePointers = new Map();
+let gestureStart = null;
+let pinchStartDistance = 0;
+let pinchStartScale = 1;
+let pinchStartCenter = null;
+const MIN_SWIPE_DISTANCE = 110;
+const MAX_ZOOM = 4;
+
 
 /* ==========================================
    APRI LIGHTBOX
@@ -219,6 +234,8 @@ let currentIndex = 0;
 function openLightbox(index) {
 
   currentIndex = index;
+
+  resetImageView();
 
   const item = galleryItems[currentIndex];
 
@@ -232,6 +249,9 @@ function openLightbox(index) {
   if (lightboxImg) {
     lightboxImg.style.display = 'none';
   }
+  if (imageViewport) {
+    imageViewport.style.display = 'none';
+  }
 
   if (lightboxVideo) {
     lightboxVideo.style.display = 'none';
@@ -243,8 +263,14 @@ function openLightbox(index) {
 
   if (img && lightboxImg) {
 
-    lightboxImg.src = img.src;
+    if (imageViewport) imageViewport.style.display = 'flex';
     lightboxImg.style.display = 'block';
+    lightboxImg.src = img.currentSrc || img.src;
+    lightboxImg.onload = () => {
+      resetImageView();
+      clampImagePosition();
+      applyImageTransform();
+    };
 
   }
 
@@ -502,51 +528,171 @@ document.addEventListener('keydown', (event) => {
 
 
 /* ==========================================
-   SWIPE MOBILE
+   ZOOM, PAN E SWIPE CONTROLLATO
+   - Il tap non cambia foto.
+   - A zoom 1: swipe orizzontale deciso per cambiare foto.
+   - A zoom maggiore di 1: trascinamento per esplorare la foto.
+   - Rotella/trackpad e doppio click per zoom su desktop.
+   - Pinch a due dita per zoom su dispositivi touch.
    ========================================== */
 
-let touchStartX = 0;
-let touchEndX = 0;
-
-if (lightbox) {
-
-  lightbox.addEventListener('touchstart', (event) => {
-
-    touchStartX = event.changedTouches[0].screenX;
-
-  }, { passive: true });
-
-
-  lightbox.addEventListener('touchend', (event) => {
-
-    touchEndX = event.changedTouches[0].screenX;
-
-    const difference = touchEndX - touchStartX;
-
-    if (Math.abs(difference) < 50) return;
-
-
-    /* Swipe sinistra = successivo */
-
-    if (difference < -50) {
-
-      nextItem();
-
-    }
-
-
-    /* Swipe destra = precedente */
-
-    if (difference > 50) {
-
-      previousItem();
-
-    }
-
-  }, { passive: true });
-
+function applyImageTransform() {
+  if (!lightboxImg || !imageViewport) return;
+  lightboxImg.style.transform = `translate3d(${imageX}px, ${imageY}px, 0) scale(${imageScale})`;
+  imageViewport.classList.toggle('is-zoomed', imageScale > 1.01);
+  lightboxImg.style.cursor = imageScale > 1.01 ? 'grab' : 'zoom-in';
 }
 
+function clampImagePosition() {
+  if (!imageViewport || !lightboxImg) return;
+  const baseWidth = lightboxImg.offsetWidth;
+  const baseHeight = lightboxImg.offsetHeight;
+  const maxX = Math.max(0, (baseWidth * imageScale - imageViewport.clientWidth) / 2);
+  const maxY = Math.max(0, (baseHeight * imageScale - imageViewport.clientHeight) / 2);
+  imageX = Math.max(-maxX, Math.min(maxX, imageX));
+  imageY = Math.max(-maxY, Math.min(maxY, imageY));
+}
+
+function setImageZoom(nextScale, centerX, centerY) {
+  if (!lightboxImg || !imageViewport) return;
+  const previousScale = imageScale;
+  imageScale = Math.max(1, Math.min(MAX_ZOOM, nextScale));
+
+  /* Mantiene approssimativamente sotto il puntatore il punto ingrandito. */
+  if (centerX !== undefined && centerY !== undefined && imageScale !== previousScale) {
+    const rect = imageViewport.getBoundingClientRect();
+    const localX = centerX - (rect.left + rect.width / 2);
+    const localY = centerY - (rect.top + rect.height / 2);
+    const ratio = imageScale / previousScale;
+    imageX = localX - (localX - imageX) * ratio;
+    imageY = localY - (localY - imageY) * ratio;
+  }
+
+  if (imageScale === 1) {
+    imageX = 0;
+    imageY = 0;
+  }
+  clampImagePosition();
+  applyImageTransform();
+}
+
+function resetImageView() {
+  imageScale = 1;
+  imageX = 0;
+  imageY = 0;
+  activePointers.clear();
+  gestureStart = null;
+  pinchStartDistance = 0;
+  pinchStartCenter = null;
+  if (lightboxImg) lightboxImg.style.transform = 'translate3d(0, 0, 0) scale(1)';
+  if (imageViewport) imageViewport.classList.remove('is-zoomed');
+}
+
+function pointerDistance(a, b) {
+  return Math.hypot(a.x - b.x, a.y - b.y);
+}
+
+function pointerCenter(a, b) {
+  return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+}
+
+if (imageViewport && lightboxImg) {
+  imageViewport.addEventListener('wheel', (event) => {
+    if (lightboxImg.style.display === 'none') return;
+    event.preventDefault();
+    const direction = event.deltaY < 0 ? 1 : -1;
+    setImageZoom(imageScale + direction * 0.25, event.clientX, event.clientY);
+  }, { passive: false });
+
+  imageViewport.addEventListener('dblclick', (event) => {
+    event.preventDefault();
+    if (imageScale > 1) setImageZoom(1);
+    else setImageZoom(2, event.clientX, event.clientY);
+  });
+
+  imageViewport.addEventListener('pointerdown', (event) => {
+    if (lightboxImg.style.display === 'none') return;
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    event.preventDefault();
+    imageViewport.setPointerCapture(event.pointerId);
+    activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+    if (activePointers.size === 1) {
+      const imageRect = lightboxImg.getBoundingClientRect();
+      const overImage = event.clientX >= imageRect.left && event.clientX <= imageRect.right &&
+                        event.clientY >= imageRect.top && event.clientY <= imageRect.bottom;
+      gestureStart = {
+        x: event.clientX,
+        y: event.clientY,
+        imageX,
+        imageY,
+        overImage,
+        moved: false
+      };
+    } else if (activePointers.size === 2) {
+      const points = [...activePointers.values()];
+      pinchStartDistance = pointerDistance(points[0], points[1]);
+      pinchStartScale = imageScale;
+      pinchStartCenter = pointerCenter(points[0], points[1]);
+      gestureStart = null;
+    }
+  });
+
+  imageViewport.addEventListener('pointermove', (event) => {
+    if (!activePointers.has(event.pointerId)) return;
+    activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+    if (activePointers.size >= 2) {
+      const points = [...activePointers.values()];
+      const distance = pointerDistance(points[0], points[1]);
+      if (pinchStartDistance > 0) {
+        const center = pointerCenter(points[0], points[1]);
+        setImageZoom(pinchStartScale * (distance / pinchStartDistance), center.x, center.y);
+      }
+      return;
+    }
+
+    if (!gestureStart) return;
+    const dx = event.clientX - gestureStart.x;
+    const dy = event.clientY - gestureStart.y;
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) gestureStart.moved = true;
+
+    if (gestureStart.overImage && imageScale > 1.01) {
+      imageX = gestureStart.imageX + dx;
+      imageY = gestureStart.imageY + dy;
+      clampImagePosition();
+      applyImageTransform();
+    }
+  });
+
+  function finishImagePointer(event) {
+    if (!activePointers.has(event.pointerId)) return;
+    const point = activePointers.get(event.pointerId);
+    activePointers.delete(event.pointerId);
+
+    /* Lo swipe cambia elemento soltanto se iniziato nello spazio libero,
+       fuori dai bordi effettivi della foto. Sulla foto lo swipe non cambia elemento:
+       se ingrandita serve a spostarla, altrimenti non fa nulla. */
+    if (activePointers.size === 0 && gestureStart && !gestureStart.overImage) {
+      const dx = point.x - gestureStart.x;
+      const dy = point.y - gestureStart.y;
+      if (Math.abs(dx) >= MIN_SWIPE_DISTANCE && Math.abs(dx) > Math.abs(dy) * 1.35) {
+        if (dx < 0) nextItem();
+        else previousItem();
+      }
+    }
+
+    if (activePointers.size < 2) {
+      pinchStartDistance = 0;
+      pinchStartCenter = null;
+    }
+    if (activePointers.size === 0) gestureStart = null;
+  }
+
+  imageViewport.addEventListener('pointerup', finishImagePointer);
+  imageViewport.addEventListener('pointercancel', finishImagePointer);
+  imageViewport.addEventListener('lostpointercapture', finishImagePointer);
+}
 
 /* ==========================================
    ANIMAZIONE SERVIZI
