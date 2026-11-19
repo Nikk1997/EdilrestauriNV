@@ -559,18 +559,42 @@ footer a:focus {
 }
 
 #lightbox-content {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px 70px;
+  pointer-events: auto;
+}
+
+/* Area foto con dimensioni definite: evita che il lightbox si apra vuoto */
+#lightbox-image-viewport {
+  position: absolute;
+  inset: 40px 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  touch-action: none;
+  cursor: zoom-in;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: auto;
+}
+
+#lightbox-image-viewport.is-zoomed {
+  cursor: grab;
+}
+
+#lightbox-image-viewport.is-zoomed:active {
+  cursor: grabbing;
 }
 
 #lightbox-img,
 #lightbox-video {
-  max-width: 95vw;
-  max-height: 90vh;
+  max-width: 100%;
+  max-height: 100%;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -579,8 +603,26 @@ footer a:focus {
   box-shadow: 0 0 25px rgba(0,0,0,0.6);
 }
 
+#lightbox-img {
+  display: none;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  flex: 0 0 auto;
+  transform: translate3d(0, 0, 0) scale(1);
+  transform-origin: center center;
+  will-change: transform;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 #lightbox-video {
   display: none;
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
   background: #000;
 }
 
@@ -658,10 +700,14 @@ footer a:focus {
     padding: 50px 45px;
   }
 
+  #lightbox-image-viewport {
+    inset: 50px 45px;
+  }
+
   #lightbox-img,
   #lightbox-video {
-    max-width: 90vw;
-    max-height: 82vh;
+    max-width: 100%;
+    max-height: 100%;
   }
 
   .lightbox-btn {
@@ -686,3 +732,35 @@ footer a:focus {
     font-size: 29px;
   }
 }
+/* CORREZIONE ADATTAMENTO FOTO NEL LIGHTBOX */
+#lightbox-image-viewport {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 44px 82px;
+}
+
+#lightbox-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  flex: 0 1 auto;
+}
+
+@media (max-width: 768px) {
+  #lightbox-image-viewport {
+    inset: 0;
+    padding: 56px 50px;
+  }
+
+  #lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
