@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EdilRestauri - Ristrutturazioni e Soluzioni per la Casa</title>
+  <link rel="stylesheet" href="stile-zoom-test.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+ <!-- NAVBAR -->
+<header class="navbar">
+  <div class="container nav-container">
+    <div class="logo-container">
+      <img src="img/logo.png" alt="EdilRestauri Logo" class="logo">
+    </div>
+
+    <nav class="nav-desktop">
+      <a href="#home">Home</a>
+      <a href="#galleria">Lavori</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+
+    <!-- HAMBURGER ICON -->
+    <button class="hamburger" id="hamburger">
+       <span></span>
+       <span></span>
+       <span></span>
+    </button>
+
+    <!-- MOBILE NAV -->
+    <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#galleria">Lavori</a></li>
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>Ristrutturazioni di qualità</h1>
+      <h2>EdilRestauri offre soluzioni complete per la cura e il restauro della tua casa. Dalle ristrutturazioni integrali alle tinteggiature di pregio, fino ai trattamenti contro muffa e umidità con cappotti interni ed esterni, ogni intervento è realizzato con materiali di alta qualità, massima precisione e attenzione ai dettagli. Il nostro obiettivo è trasformare ogni ambiente in uno spazio luminoso, accogliente e duraturo nel tempo, unendo estetica, comfort e funzionalità.</h2>
+    </div>
+  </section>
+
+  
+  <!-- GALLERIA -->
+<section id="galleria" class="galleria">
+  <div class="container">
+    <h2>I nostri lavori</h2>
+
+    <div class="galleria-wrapper">
+      <button class="galleria-btn left">&#10094;</button>
+
+      <div class="galleria-scroll">
+
+  <!-- VIDEO 1 -->
+  <div class="foto">
+    <video
+      controls
+      preload="metadata"
+      playsinline
+      poster="img/video2-poster.jpg">
+
+      <source src="video/video2.mp4" type="video/mp4">
+      Il tuo browser non supporta il video.
+    </video>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="foto">
+    <video
+      controls
+      preload="metadata"
+      playsinline
+      poster="img/video-poster.jpg">
+
+      <source src="video/video1.mp4" type="video/mp4">
+      Il tuo browser non supporta il video.
+    </video>
+  </div>
+
+  <!-- FOTO -->
+  <div class="foto"><img src="img/foto1.jpg"></div>
+  <div class="foto"><img src="img/foto2.jpg"></div>
+  <div class="foto"><img src="img/foto3.jpg"></div>
+  <div class="foto"><img src="img/foto4.jpg"></div>
+  <div class="foto"><img src="img/foto5.jpg"></div>
+  <div class="foto"><img src="img/foto6.jpg"></div>
+  <div class="foto"><img src="img/foto7.jpg"></div>
+  <div class="foto"><img src="img/foto8.jpg"></div>
+  <div class="foto"><img src="img/foto9.jpg"></div>
+  <div class="foto"><img src="img/foto10.jpg"></div>
+  <div class="foto"><img src="img/foto11.jpg"></div>
+  <div class="foto"><img src="img/foto12.jpg"></div>
+  <div class="foto"><img src="img/foto13.jpg"></div>
+  <div class="foto"><img src="img/foto14.jpg"></div>
+</div>
+
+<button class="galleria-btn right">&#10095;</button>
+</div>
+
+      
+  </div>
+</section>
+
+ <!-- LIGHTBOX GALLERIA -->
+<div id="lightbox">
+
+  <button id="lightbox-prev" class="lightbox-btn" aria-label="Elemento precedente">
+    &#10094;
+  </button>
+
+  <div id="lightbox-content">
+    <div id="lightbox-image-viewport">
+      <img id="lightbox-img" alt="Lavoro EdilRestauri">
+    </div>
+
+    <video id="lightbox-video" controls playsinline preload="metadata">
+      <source id="lightbox-video-source" src="" type="video/mp4">
+      Il tuo browser non supporta il video.
+    </video>
+  </div>
+
+  <button id="lightbox-next" class="lightbox-btn" aria-label="Elemento successivo">
+    &#10095;
+  </button>
+
+  <button id="lightbox-close" aria-label="Chiudi">
+    &times;
+  </button>
+
+</div>
+
+  <!-- SERVIZI -->
+  <section id="servizi" class="servizi">
+    <div class="container">
+      <h2>I nostri servizi</h2>
+      <div class="servizi-grid">
+        <div class="servizio">
+          <h3>Ristrutturazioni complete</h3>
+          <p>Gestiamo ogni fase, dal progetto alla consegna, garantendo qualità e precisione in ogni dettaglio.</p>
+        </div>
+        <div class="servizio">
+          <h3>Tinteggiature e finiture di pregio</h3>
+          <p>Utilizziamo prodotti professionali e tecniche moderne per interni eleganti e duraturi.</p>
+        </div>
+        <div class="servizio">
+          <h3>Trattamenti antimuffa e antiumidità</h3>
+          <p>Soluzioni avanzate per eliminare muffa e condensa, con cappotti termici interni ed esterni.</p>
+        </div>
+        <div class="servizio">
+          <h3>Risanamento facciate e cappotti</h3>
+          <p>Rinnoviamo e valorizziamo gli esterni con materiali resistenti e design moderno.</p>
+        </div>
+        <div class="servizio">
+          <h3>Cartongesso e controsoffitti</h3>
+          <p>Realizziamo soluzioni su misura per spazi unici e funzionali.</p>
+        </div>
+        <div class="servizio">
+          <h3>Impermeabilizzazioni e isolamenti</h3>
+          <p>Proteggiamo la tua casa da infiltrazioni e dispersioni, migliorando comfort e risparmio energetico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <h2>Hai un progetto in mente?</h2>
+      <p>Affidati a EdilRestauriNV per un sopralluogo gratuito e un preventivo personalizzato. Professionalità, trasparenza e risultati di alta qualità garantiti.</p>
+      <a href="mailto:edilrestaurinv@gmail.com" class="cta-button">Richiedi un preventivo</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contatti">
+    <div class="container">
+      <p><strong>EdilRestauri</strong> — Chioggia e dintorni</p>
+      <p>📞 329 221 6833 — ✉️ <a href="mailto:edilrestaurinv@gmail.com">edilrestaurinv@gmail.com</a></p>
+      <p>P.IVA: 04900060270</p>
+      <p>&copy; 2025 EdilRestauri. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+<!-- SCRIPT -->
+<script>
+
+/* ==========================================
+   LIGHTBOX GALLERIA
+   FOTO + VIDEO + FRECCE + SWIPE
+   ========================================== */
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxVideo = document.getElementById('lightbox-video');
+const lightboxVideoSource = document.getElementById('lightbox-video-source');
+
+const lightboxPrev = document.getElementById('lightbox-prev');
+const lightboxNext = document.getElementById('lightbox-next');
+const lightboxClose = document.getElementById('lightbox-close');
+
+const gallery = document.querySelector('.galleria-scroll');
+const galleryItems = document.querySelectorAll('.galleria-scroll .foto');
+
+let currentIndex = 0;
+
+/* ZOOM E MOVIMENTO DELLE FOTO NEL LIGHTBOX */
+const imageViewport = document.getElementById('lightbox-image-viewport');
+let imageScale = 1;
+let imageX = 0;
+let imageY = 0;
+let activePointers = new Map();
+let gestureStart = null;
+let pinchStartDistance = 0;
+let pinchStartScale = 1;
+let pinchStartCenter = null;
+let touchPinchStartDistance = 0;
+let touchPinchStartScale = 1;
+let touchGestureStart = null;
+let touchWasPinching = false;
+const MIN_SWIPE_DISTANCE = 110;
+const MAX_ZOOM = 4;
+
+
+/* ==========================================
+   APRI LIGHTBOX
+   ========================================== */
+
+function openLightbox(index) {
+
+  currentIndex = index;
+
+  resetImageView();
+
+  const item = galleryItems[currentIndex];
+
+  if (!item || !lightbox) return;
+
+  const img = item.querySelector('img');
+  const video = item.querySelector('video');
+
+  /* Nasconde tutto */
+
+  if (lightboxImg) {
+    lightboxImg.style.display = 'none';
+  }
+  if (imageViewport) {
+    imageViewport.style.display = 'none';
+  }
+
+  if (lightboxVideo) {
+    lightboxVideo.style.display = 'none';
+    lightboxVideo.pause();
+  }
+
+
+  /* FOTO */
+
+  if (img && lightboxImg) {
+
+    if (imageViewport) imageViewport.style.display = 'flex';
+    lightboxImg.style.display = 'block';
+    lightboxImg.src = img.currentSrc || img.src;
+    lightboxImg.onload = () => {
+      resetImageView();
+      clampImagePosition();
+      applyImageTransform();
+    };
+
+  }
+
+
+  /* VIDEO */
+
+  if (video && lightboxVideo && lightboxVideoSource) {
+
+    const source = video.querySelector('source');
+
+    if (source) {
+
+      lightboxVideoSource.src = source.src;
+
+      lightboxVideo.load();
+
+      lightboxVideo.style.display = 'block';
+
+    }
+
+  }
+
+
+  lightbox.style.display = 'flex';
+
+  document.body.style.overflow = 'hidden';
+
+}
+
+
+/* ==========================================
+   CHIUDI LIGHTBOX
+   ========================================== */
+
+function closeLightbox() {
+
+  if (!lightbox) return;
+
+  lightbox.style.display = 'none';
+
+  if (lightboxImg) {
+    lightboxImg.src = '';
+  }
+
+  if (lightboxVideo) {
+
+    lightboxVideo.pause();
+
+    lightboxVideo.style.display = 'none';
+
+  }
+
+  if (lightboxVideoSource) {
+
+    lightboxVideoSource.src = '';
+
+  }
+
+  if (lightboxVideo) {
+    lightboxVideo.load();
+  }
+
+  document.body.style.overflow = '';
+
+}
+
+
+/* ==========================================
+   SUCCESSIVO
+   ========================================== */
+
+function nextItem() {
+
+  if (!galleryItems.length) return;
+
+  currentIndex++;
+
+  if (currentIndex >= galleryItems.length) {
+    currentIndex = 0;
+  }
+
+  openLightbox(currentIndex);
+
+}
+
+
+/* ==========================================
+   PRECEDENTE
+   ========================================== */
+
+function previousItem() {
+
+  if (!galleryItems.length) return;
+
+  currentIndex--;
+
+  if (currentIndex < 0) {
+    currentIndex = galleryItems.length - 1;
+  }
+
+  openLightbox(currentIndex);
+
+}
+
+
+/* ==========================================
+   CLICK FOTO
+   ========================================== */
+
+galleryItems.forEach((item, index) => {
+
+  const img = item.querySelector('img');
+
+  if (img) {
+
+    img.addEventListener('click', () => {
+
+      openLightbox(index);
+
+    });
+
+  }
+
+});
+
+
+/* ==========================================
+   CLICK VIDEO
+   ========================================== */
+
+galleryItems.forEach((item, index) => {
+
+  const video = item.querySelector('video');
+
+  if (video) {
+
+    video.addEventListener('click', (event) => {
+
+      /*
+       * Il click apre il video nel lightbox.
+       */
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      openLightbox(index);
+
+    });
+
+  }
+
+});
+
+
+/* ==========================================
+   FRECCIA SUCCESSIVA
+   ========================================== */
+
+if (lightboxNext) {
+
+  lightboxNext.addEventListener('click', (event) => {
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    nextItem();
+
+  });
+
+}
+
+
+/* ==========================================
+   FRECCIA PRECEDENTE
+   ========================================== */
+
+if (lightboxPrev) {
+
+  lightboxPrev.addEventListener('click', (event) => {
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    previousItem();
+
+  });
+
+}
+
+
+/* ==========================================
+   CHIUDI CON X
+   ========================================== */
+
+if (lightboxClose) {
+
+  lightboxClose.addEventListener('click', (event) => {
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    closeLightbox();
+
+  });
+
+}
+
+
+/* ==========================================
+   CHIUDI CLICCANDO SULLO SFONDO
+   ========================================== */
+
+if (lightbox) {
+
+  lightbox.addEventListener('click', (event) => {
+
+    if (event.target === lightbox) {
+
+      closeLightbox();
+
+    }
+
+  });
+
+}
+
+
+/* ==========================================
+   TASTIERA DESKTOP
+   ========================================== */
+
+document.addEventListener('keydown', (event) => {
+
+  if (!lightbox || lightbox.style.display !== 'flex') return;
+
+  if (event.key === 'ArrowRight') {
+
+    nextItem();
+
+  }
+
+  if (event.key === 'ArrowLeft') {
+
+    previousItem();
+
+  }
+
+  if (event.key === 'Escape') {
+
+    closeLightbox();
+
+  }
+
+});
+
+
+/* ==========================================
+   ZOOM, PAN E SWIPE CONTROLLATO
+   - Il tap non cambia foto.
+   - A zoom 1: swipe orizzontale deciso per cambiare foto.
+   - A zoom maggiore di 1: trascinamento per esplorare la foto.
+   - Rotella/trackpad e doppio click per zoom su desktop.
+   - Pinch a due dita per zoom su dispositivi touch.
+   ========================================== */
+
+function applyImageTransform() {
+  if (!lightboxImg || !imageViewport) return;
+  lightboxImg.style.transform = `translate3d(${imageX}px, ${imageY}px, 0) scale(${imageScale})`;
+  imageViewport.classList.toggle('is-zoomed', imageScale > 1.01);
+  lightboxImg.style.cursor = imageScale > 1.01 ? 'grab' : 'zoom-in';
+}
+
+function clampImagePosition() {
+  if (!imageViewport || !lightboxImg) return;
+  const baseWidth = lightboxImg.offsetWidth;
+  const baseHeight = lightboxImg.offsetHeight;
+  const maxX = Math.max(0, (baseWidth * imageScale - imageViewport.clientWidth) / 2);
+  const maxY = Math.max(0, (baseHeight * imageScale - imageViewport.clientHeight) / 2);
+  imageX = Math.max(-maxX, Math.min(maxX, imageX));
+  imageY = Math.max(-maxY, Math.min(maxY, imageY));
+}
+
+function setImageZoom(nextScale, centerX, centerY) {
+  if (!lightboxImg || !imageViewport) return;
+  const previousScale = imageScale;
+  imageScale = Math.max(1, Math.min(MAX_ZOOM, nextScale));
+
+  /* Mantiene approssimativamente sotto il puntatore il punto ingrandito. */
+  if (centerX !== undefined && centerY !== undefined && imageScale !== previousScale) {
+    const rect = imageViewport.getBoundingClientRect();
+    const localX = centerX - (rect.left + rect.width / 2);
+    const localY = centerY - (rect.top + rect.height / 2);
+    const ratio = imageScale / previousScale;
+    imageX = localX - (localX - imageX) * ratio;
+    imageY = localY - (localY - imageY) * ratio;
+  }
+
+  if (imageScale === 1) {
+    imageX = 0;
+    imageY = 0;
+  }
+  clampImagePosition();
+  applyImageTransform();
+}
+
+function resetImageView() {
+  imageScale = 1;
+  imageX = 0;
+  imageY = 0;
+  activePointers.clear();
+  gestureStart = null;
+  pinchStartDistance = 0;
+  pinchStartCenter = null;
+  if (lightboxImg) lightboxImg.style.transform = 'translate3d(0, 0, 0) scale(1)';
+  if (imageViewport) imageViewport.classList.remove('is-zoomed');
+}
+
+function pointerDistance(a, b) {
+  return Math.hypot(a.x - b.x, a.y - b.y);
+}
+
+function pointerCenter(a, b) {
+  return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+}
+
+if (imageViewport && lightboxImg) {
+  imageViewport.addEventListener('wheel', (event) => {
+    if (lightboxImg.style.display === 'none') return;
+    event.preventDefault();
+    const direction = event.deltaY < 0 ? 1 : -1;
+    setImageZoom(imageScale + direction * 0.25, event.clientX, event.clientY);
+  }, { passive: false });
+
+  imageViewport.addEventListener('dblclick', (event) => {
+    event.preventDefault();
+    if (imageScale > 1) setImageZoom(1);
+    else setImageZoom(2, event.clientX, event.clientY);
+  });
+
+  imageViewport.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'touch') return;
+    if (lightboxImg.style.display === 'none') return;
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    event.preventDefault();
+    imageViewport.setPointerCapture(event.pointerId);
+    activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+    if (activePointers.size === 1) {
+      const imageRect = lightboxImg.getBoundingClientRect();
+      const overImage = event.clientX >= imageRect.left && event.clientX <= imageRect.right &&
+                        event.clientY >= imageRect.top && event.clientY <= imageRect.bottom;
+      gestureStart = {
+        x: event.clientX,
+        y: event.clientY,
+        imageX,
+        imageY,
+        overImage,
+        moved: false
+      };
+    } else if (activePointers.size === 2) {
+      const points = [...activePointers.values()];
+      pinchStartDistance = pointerDistance(points[0], points[1]);
+      pinchStartScale = imageScale;
+      pinchStartCenter = pointerCenter(points[0], points[1]);
+      gestureStart = null;
+    }
+  });
+
+  imageViewport.addEventListener('pointermove', (event) => {
+    if (event.pointerType === 'touch') return;
+    if (!activePointers.has(event.pointerId)) return;
+    activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+    if (activePointers.size >= 2) {
+      const points = [...activePointers.values()];
+      const distance = pointerDistance(points[0], points[1]);
+      if (pinchStartDistance > 0) {
+        const center = pointerCenter(points[0], points[1]);
+        setImageZoom(pinchStartScale * (distance / pinchStartDistance), center.x, center.y);
+      }
+      return;
+    }
+
+    if (!gestureStart) return;
+    const dx = event.clientX - gestureStart.x;
+    const dy = event.clientY - gestureStart.y;
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) gestureStart.moved = true;
+
+    if (gestureStart.overImage && imageScale > 1.01) {
+      imageX = gestureStart.imageX + dx;
+      imageY = gestureStart.imageY + dy;
+      clampImagePosition();
+      applyImageTransform();
+    }
+  });
+
+  function finishImagePointer(event) {
+    if (event.pointerType === 'touch') return;
+    if (!activePointers.has(event.pointerId)) return;
+    const point = activePointers.get(event.pointerId);
+    activePointers.delete(event.pointerId);
+
+    /* Lo swipe cambia elemento soltanto se iniziato nello spazio libero,
+       fuori dai bordi effettivi della foto. Sulla foto lo swipe non cambia elemento:
+       se ingrandita serve a spostarla, altrimenti non fa nulla. */
+    if (activePointers.size === 0 && gestureStart && !gestureStart.overImage) {
+      const dx = point.x - gestureStart.x;
+      const dy = point.y - gestureStart.y;
+      if (Math.abs(dx) >= MIN_SWIPE_DISTANCE && Math.abs(dx) > Math.abs(dy) * 1.35) {
+        if (dx < 0) nextItem();
+        else previousItem();
+      }
+    }
+
+    if (activePointers.size < 2) {
+      pinchStartDistance = 0;
+      pinchStartCenter = null;
+    }
+    if (activePointers.size === 0) gestureStart = null;
+  }
+
+  imageViewport.addEventListener('pointerup', finishImagePointer);
+  imageViewport.addEventListener('pointercancel', finishImagePointer);
+  imageViewport.addEventListener('lostpointercapture', finishImagePointer);
+
+  /* Gestione touch nativa separata dai Pointer Events.
+     In questo modo i gesti su iPhone/Android non dipendono dal pointer capture. */
+  function getTouchPoint(touch) {
+    return { x: touch.clientX, y: touch.clientY };
+  }
+
+  function startTouchGesture(touch, overImage = true) {
+    touchGestureStart = {
+      x: touch.clientX,
+      y: touch.clientY,
+      imageX,
+      imageY,
+      overImage
+    };
+  }
+
+  imageViewport.addEventListener('touchstart', (event) => {
+    if (lightboxImg.style.display === 'none') return;
+
+    if (event.touches.length === 1 && !touchWasPinching) {
+      const touch = event.touches[0];
+      const rect = lightboxImg.getBoundingClientRect();
+      const overImage = touch.clientX >= rect.left && touch.clientX <= rect.right &&
+                        touch.clientY >= rect.top && touch.clientY <= rect.bottom;
+      startTouchGesture(touch, overImage);
+      return;
+    }
+
+    if (event.touches.length >= 2) {
+      event.preventDefault();
+      touchWasPinching = true;
+      touchGestureStart = null;
+      const a = event.touches[0];
+      const b = event.touches[1];
+      touchPinchStartDistance = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+      touchPinchStartScale = imageScale;
+    }
+  }, { passive: false });
+
+  imageViewport.addEventListener('touchmove', (event) => {
+    if (lightboxImg.style.display === 'none') return;
+
+    if (event.touches.length >= 2) {
+      event.preventDefault();
+      const a = event.touches[0];
+      const b = event.touches[1];
+      const distance = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+      const centerX = (a.clientX + b.clientX) / 2;
+      const centerY = (a.clientY + b.clientY) / 2;
+      if (touchPinchStartDistance > 0) {
+        setImageZoom(touchPinchStartScale * (distance / touchPinchStartDistance), centerX, centerY);
+      }
+      return;
+    }
+
+    if (event.touches.length === 1) {
+      event.preventDefault();
+      const touch = event.touches[0];
+      if (touchGestureStart && touchGestureStart.overImage && imageScale > 1.01) {
+        imageX = touchGestureStart.imageX + touch.clientX - touchGestureStart.x;
+        imageY = touchGestureStart.imageY + touch.clientY - touchGestureStart.y;
+        clampImagePosition();
+        applyImageTransform();
+      }
+    }
+  }, { passive: false });
+
+  function finishNativeTouch(event) {
+    if (event.touches.length === 1 && touchWasPinching) {
+      /* Se resta un dito dopo il pinch, consente di continuare a spostare la foto. */
+      touchWasPinching = false;
+      touchPinchStartDistance = 0;
+      startTouchGesture(event.touches[0], true);
+      return;
+    }
+
+    if (event.touches.length > 0) return;
+
+    if (!touchWasPinching && touchGestureStart && !touchGestureStart.overImage && event.changedTouches.length) {
+      const touch = event.changedTouches[0];
+      const dx = touch.clientX - touchGestureStart.x;
+      const dy = touch.clientY - touchGestureStart.y;
+      if (Math.abs(dx) >= MIN_SWIPE_DISTANCE && Math.abs(dx) > Math.abs(dy) * 1.35) {
+        if (dx < 0) nextItem();
+        else previousItem();
+      }
+    }
+
+    touchWasPinching = false;
+    touchPinchStartDistance = 0;
+    touchGestureStart = null;
+  }
+
+  imageViewport.addEventListener('touchend', finishNativeTouch, { passive: true });
+  imageViewport.addEventListener('touchcancel', finishNativeTouch, { passive: true });
+}
+
+/* ==========================================
+   ANIMAZIONE SERVIZI
+   ========================================== */
+
+const servizi = document.querySelectorAll('.servizio');
+
+if (servizi.length) {
+
+  const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add('show');
+
+      }
+
+    });
+
+  }, {
+    threshold: 0.3
+  });
+
+
+  servizi.forEach(s => observer.observe(s));
+
+}
+
+
+/* ==========================================
+   MENU HAMBURGER MOBILE
+   ========================================== */
+
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
+
+if (hamburger && mobileNav) {
+
+  hamburger.addEventListener('click', () => {
+
+    hamburger.classList.toggle('active');
+
+    mobileNav.classList.toggle('active');
+
+    const isOpen = mobileNav.classList.contains('active');
+
+    mobileNav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+
+  });
+
+
+  /* Chiude il menu quando clicchi un link */
+
+  document.querySelectorAll('.mobile-nav a').forEach(link => {
+
+    link.addEventListener('click', () => {
+
+      hamburger.classList.remove('active');
+
+      mobileNav.classList.remove('active');
+
+      mobileNav.setAttribute('aria-hidden', 'true');
+
+    });
+
+  });
+
+}
+
+
+/* ==========================================
+   FRECCE GALLERIA NORMALE
+   ========================================== */
+
+const btnLeft = document.querySelector('.galleria-btn.left');
+const btnRight = document.querySelector('.galleria-btn.right');
+
+
+if (gallery && btnLeft && btnRight) {
+
+  const scrollAmount = () => {
+
+    const firstItem = gallery.querySelector('.foto');
+
+    if (!firstItem) return 0;
+
+    return firstItem.offsetWidth + 20;
+
+  };
+
+
+  btnRight.addEventListener('click', () => {
+
+    gallery.scrollBy({
+
+      left: scrollAmount(),
+
+      behavior: 'smooth'
+
+    });
+
+  });
+
+
+  btnLeft.addEventListener('click', () => {
+
+    gallery.scrollBy({
+
+      left: -scrollAmount(),
+
+      behavior: 'smooth'
+
+    });
+
+  });
+
+}
+
+</script>
+
+
+
+</body>
+</html>
